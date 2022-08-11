@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>BDA Chaco</title>
+
+	<meta name="description" content="Practica para el proyecto de informatorio">
+	<meta name="keywords" content="reducir, reciclar, reutilizar">
+
+	<link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css"/> <!--Estilos general-->
+	<link rel="icon" type="image/x-icon" href="{% static 'img/rrr_ico.ico' %}"/>
+</head>
+
+<body>
+<header>
+	<div class="container">
+		<div class="logo_header"><img src="{% static 'img/png_lg.png' %}"></div>
+		<div class="menu">
+			
+			<ul>
+				<li><a href="{% url 'base' %}">Inicio</a></li>
+				<li><a href="{% url 'noticias:listar_noticias' %}">Noticias</a></li>
+				<li><a href="#about_us">Nosotros</a></li>
+				<li><a href="#contact_us">Contacto</a></li>
+			</ul>
+
+		</div>
+	</div>
+</header><!--fin header-->
+
+<section>
+	<div class="index_content">
+		<div class="content_margin">
+			
+			<a href="#"><div class="outstanding">
+				<div id="img_news"></div>
+				<div id="title_news">Acá se manda el titular de la noticia más actual</div>
+			</div></a><!--noticias destacadas, esto se tiene que repetir solo-->
+
+		</div>
+	</div>
+</section> <!--fin section-->
+	
+<section>
+	
+</section> <!--nosotros-->
+
+<section>
+	
+</section> <!--contacto-->
+</body>
+</html>
