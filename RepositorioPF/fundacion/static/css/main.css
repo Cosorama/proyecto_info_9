@@ -1,6 +1,6 @@
 @media screen and (orientation: landscape){
 
-*{
+{
 	font-family: Arial;
 }
 
@@ -19,7 +19,7 @@ body{
 header{
 	width: 100vw;
 
-	background: #ffea00 url(../img/background_header.png) no-repeat;
+	background: #ffea00 url(..img/background_header.png) no-repeat;
 	background-size: 100%;
 
 	margin-top: -15vh;
