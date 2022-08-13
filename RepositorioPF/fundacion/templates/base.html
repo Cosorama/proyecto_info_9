@@ -18,10 +18,10 @@
 	<div class="container">
 		<div class="logo_header"><img src="{% static 'img/png_lg.png' %}"></div>
 		<div class="menu">
-			
+				
 			<ul>
-				<li><a href="{% url 'base' %}">Inicio</a></li>
-				<li><a href="#noticias">Noticias</a></li> <!--href="{% url 'noticias:listar_noticias' %}"-->
+				<li><a href="{% url 'home' %}">Inicio</a></li>
+				<li><a href="{% url 'noticias:listar_noticias' %}">Noticias</a></li> <!--href="{% url 'noticias:listar_noticias' %}"-->
 				<li><a href="#about_us">Nosotros</a></li>
 				<li><a href="#contact_us">Contacto</a></li>
 			</ul>
@@ -30,35 +30,11 @@
 	</div>
 </header> <!--fin header-->
 
-<section>
-	<div class="index_content">
-		<div class="content_margin">
-			
-			<a href="#"><div class="outstanding">
-				<div id="img_news"></div>
-				<div id="title_news">Titular de la noticia más actual</div>
-			</div></a><!--noticias destacadas, esto se tiene que repetir solo-->
 
-			<a href="#"><div class="outstanding">
-				<div id="img_news"></div>
-				<div id="title_news">Otro titular de la noticia</div>
-			</div></a>
 
-			<a href="#"><div class="outstanding">
-				<div id="img_news"></div>
-				<div id="title_news">Otro titular más</div>
-			</div></a>
+	{% block contenido %}
 
-		</div>
-	</div>
-</section> <!--fin section-->
+	{% endblock contenido %}
 
-<section>
-	
-</section> <!--nosotros-->
-
-<section>
-	
-</section> <!--contacto-->
 </body>
 </html>
