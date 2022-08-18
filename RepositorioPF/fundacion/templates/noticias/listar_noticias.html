@@ -12,7 +12,7 @@
 			{% endif %}
 		<p>Cuerpo: {{ n.cuerpo }}</p>
 		{% if n.imagen %}
-			<img src="{{ n.imagen.url }}">
+			<img src="{{ n.imagen.url }}" width="100px" height="100px">
 		{% endif %}
 		<a href="{% url 'noticias:noticia_detail' n.pk %}">VER MAS</a>
 	{% endfor %}
