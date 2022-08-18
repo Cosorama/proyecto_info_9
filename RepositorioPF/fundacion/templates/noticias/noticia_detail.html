@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+	
+
+
+	<h1>DETALLE NOTICIA</h1>
+	<br>
+
+	<h2>{{object.titulo}}</h2>
+	<p>CATEGORIA: {{ object.categoria.nombre }}</p>
+	{% if object.autor %}
+		<p>AUTOR: {{ object.autor }}</p>
+	{% endif %}
+
+	<p>CUERPO: {{ object.cuerpo }}</p>
+
+	{% if object.imagen %}
+		<img src="{{ object.imagen.url }}" width="100px" height="100px">
+	{% endif %}
+
+	
+
+{% endblock contenido %}

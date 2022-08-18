@@ -14,6 +14,7 @@
 		{% if n.imagen %}
 			<img src="{{ n.imagen.url }}">
 		{% endif %}
+		<a href="{% url 'noticias:noticia_detail' n.pk %}">VER MAS</a>
 	{% endfor %}
 
 {% endblock contenido %}

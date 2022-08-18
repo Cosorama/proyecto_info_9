@@ -33,6 +33,12 @@ style="background-repeat: repeat-y; background-size: cover;"
 				
 			<ul>
 				<li><a href="{% url 'home' %}">Inicio</a></li>
+				{% if user.is_authenticated %}
+					<span>HOLA {{user.username}}!!</span>
+					<a href="{% url 'logout' %}">LOGOUT</a>
+				{% else %}
+					<a href="{% url 'login' %}">LOGIN</a>
+				{% endif %}
 				<li><a href="{% url 'noticias:listar_noticias' %}">Noticias</a></li> <!--href="{% url 'noticias:listar_noticias' %}"-->
 				<li><a href="#about_us">Nosotros</a></li>
 				<li><a href="#contact_us">Contacto</a></li>
