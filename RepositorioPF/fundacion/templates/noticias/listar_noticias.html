@@ -2,9 +2,10 @@
 {% load static %}
 
 {% block contenido %}
-    <h1>Aca aparecen las noticias</h1>
-    <br>
+<br><br>
+<div>Aca aparecen las noticias
 	{% for n in notis %}
+	<div class="noticias">
 		<h2>{{ n.titulo }}</h2>
 		<p>Categoria: {{ n.categoria.nombre }}</p>
 		{% if n.autor %}
@@ -16,5 +17,7 @@
 		{% endif %}
 		<a href="{% url 'noticias:noticia_detail' n.pk %}">VER MAS</a>
 	{% endfor %}
-
+	</div>
+</div>
 {% endblock contenido %}
+

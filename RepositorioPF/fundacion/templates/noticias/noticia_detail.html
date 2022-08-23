@@ -3,28 +3,48 @@
 
 {% block contenido %}
 	
-
+<br><br>
+<div class="main_div">
 
 	<h1>DETALLE NOTICIA</h1>
 	<br>
 
 	<h2>{{object.titulo}}</h2>
-	<p>CATEGORIA: {{ object.categoria.nombre }}</p>
+	<p>Categoria: {{ object.categoria.nombre }}</p>
 	{% if object.autor %}
-		<p>AUTOR: {{ object.autor }}</p>
+		<p>Autor: {{ object.autor }}</p>
 	{% endif %}
 
-	<p>CUERPO: {{ object.cuerpo }}</p>
+	<p>Cuerpo: {{ object.cuerpo }}</p>
 
 	{% if object.imagen %}
 		<img src="{{ object.imagen.url }}" width="100px" height="100px">
 	{% endif %}
 	
-	<br>
-	<br>
-	<h1>COMENTARIOS.....</h1>
-		<input type="text" name="">
-		<br><br><br>
+	<a href=""></a>
+		<button class="boton_comentar">
+			Comentar
+		</button>
+
+</div>
+
+<style>
+	.main_div{
+		width: 55%;
+		margin: 100px auto;
+		background-color: aquamarine;
+	}
+	.boton_comentar{
+		outline: none;
+		border: none;
+		padding: 10px;
+		color: azure;
+		background: black;
+		border-radius: 5px;
+		display: block;
+		margin-right: 7px 0;
+	}
+</style>
 	
 
 {% endblock contenido %}
