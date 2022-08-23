@@ -29,6 +29,14 @@
 				<li><a href="#about_us">Nosotros</a></li>
 				<li><a href="#contact_us">Contacto</a></li>
 			</ul>
+				<!--revisar caso de login-->
+				{% if user.is_authenticated %}
+				<span>HOLA {{user.username}}!!</span>
+				<a href="{% url 'logout' %}">LOGOUT</a>
+				{% else %}
+				<a href="{% url 'login' %}">LOGIN</a>
+				{% endif %}
+				<!--logout-->
 
 		</div>
 	</div>
