@@ -15,28 +15,20 @@
     <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 
 	<link rel="icon" type="image/x-icon" href="{% static 'img/rrr_ico.ico' %}"/>
+	
 </head>
 
 <body>
 <header>
 	<div class="container">
 		<div class="logo_header"><img src="{% static 'img/png_lg.png' %}"></div>
-		<div class="menu" id="menu">
+		<div class="menu">
 			
 			<ul>
-				<li><a href="#">Inicio</a></li>
+				<li><a href="{% url 'home' %}">Inicio</a></li>
 				<li><a href="{% url 'noticias:listar_noticias' %}">Noticias</a></li>
-				<li><a href="#about_us">Nosotros</a></li>
 				<li><a href="#contact_us">Contacto</a></li>
 			</ul>
-				<!--revisar caso de login-->
-				{% if user.is_authenticated %}
-				<span>HOLA {{user.username}}!!</span>
-				<a href="{% url 'logout' %}">LOGOUT</a>
-				{% else %}
-				<a href="{% url 'login' %}">LOGIN</a>
-				{% endif %}
-				<!--logout-->
 
 		</div>
 	</div>
@@ -44,24 +36,13 @@
 		{% block contenido %}
 
         {% endblock contenido %}
-<section>
-    <div id="about_us">
-        <div class="contact_content">
-        
-        <div class="titulo_section">Sobre nosotros!</div>
-            <div class="about_us_text">
-                “Botella de Amor” es un proyecto sin fines de lucro dedicado al desarrollo sostenible y mejoramiento de las condiciones de vida de las comunidades, con el objetivo principal de reducir los residuos plásticos en el ambiente, ya que son altamente contaminantes.
-            </div>
-        </div>
-    </div>
-</section> <!--nosotros-->
-        
+
 <section>
     <div id="contact_us">
         <div class="contact_content">
                     
             <div class="titulo_section">Contactate con nosotros!</div>
-            <div id="map"><iframe src="https://www.google.com/maps/d/embed?mid=1QBrPiv4TC7PHydND-XuRq2vPXHZBIkAE&ehbc=2E312F" width="980" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
+            <div id="map"><iframe src="https://www.google.com/maps/d/embed?mid=1QBrPiv4TC7PHydND-XuRq2vPXHZBIkAE&ehbc=2E312F" width="1000" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
                     
             <form id="contact_form" action="{Acá va la función que envía lo completado a un determinado email}" target="_blank">
         
@@ -76,5 +57,6 @@
         </div>
     </div>-->
 </section> <!--contacto-->
+
 </body>
 </html>

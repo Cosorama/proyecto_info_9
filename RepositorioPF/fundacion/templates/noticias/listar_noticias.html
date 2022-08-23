@@ -1,23 +1,19 @@
-{% extends 'base.html' %}
+{% extends 'base_noticias.html' %}
 {% load static %}
 
 {% block contenido %}
-<br><br>
-<div>Aca aparecen las noticias
-	{% for n in notis %}
-	<div class="noticias">
-		<h2>{{ n.titulo }}</h2>
-		<p>Categoria: {{ n.categoria.nombre }}</p>
-		{% if n.autor %}
-			<p>Autor: {{ n.autor }}</p>
-			{% endif %}
-		<p>Cuerpo: {{ n.cuerpo }}</p>
-		{% if n.imagen %}
-			<img src="{{ n.imagen.url }}" width="100px" height="100px">
-		{% endif %}
-		<a href="{% url 'noticias:noticia_detail' n.pk %}">VER MAS</a>
-	{% endfor %}
-	</div>
-</div>
-{% endblock contenido %}
+<section>
+	<div class="index_content">
+		<div class="content_margin_noticas">
 
+			{% for n in notis %}
+				<a href="#"><div class="outstanding">
+					<div id="img_news"><img src="{{ n.imagen.url }}"></div>
+					<div id="title_news">{{ n.titulo }}(...)</div>
+				</div></a>
+			{% endfor %}
+
+		</div>
+	</div>
+</section> <!--fin section-->
+{% endblock contenido %}
