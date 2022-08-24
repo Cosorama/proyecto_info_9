@@ -7,12 +7,19 @@
 		<div class="content_margin_noticas">
 
 			{% for n in notis %}
-				<a href="#"><div class="outstanding">
-					<div id="img_news"><img src="{{ n.imagen.url }}"></div>
-					<div id="title_news">{{ n.titulo }}(...)</div>
-				</div></a>
-			{% endfor %}
+				<h2>{{ n.titulo }}</h2>
+				<p>CATEGORIA: {{ n.categoria.nombre }}</p>
+				{% if n.autor %}
+					<p>AUTOR: {{ n.autor }}</p>
+				{% endif %}
 
+				<p>CUERPO: {{ n.cuerpo }}</p>
+
+				{% if n.imagen %}
+					<img src="{{ n.imagen.url }}" width="100px" height="100px">
+				{% endif %}
+				<a href="{% url 'noticias:noticia_detail' n.pk %}">VER MAS</a>
+			{% endfor %}
 		</div>
 	</div>
 </section> <!--fin section-->

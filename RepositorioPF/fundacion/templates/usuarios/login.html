@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block contenido %}
-<br><br><br><br>
-			<form method="POST">{%csrf_token%}
-				{{form.errors}}
-				<input type="text" name="username" placeholder="USUARIO">
-				<input type="password" name="password" placeholder="CONTRASEÑA">
+<br><br>
+	<form method="POST">{%csrf_token%}
+		{{form.errors}}
+		<input type="text" name="username" placeholder="USUARIO">
+		<input type="password" name="password" placeholder="CONTRASEÑA">
 
-				<input type="submit" name="" value="ENVIAR">
-			</form>
+		<input type="submit" name="" value="ENVIAR">
+	</form>
 {% endblock %}

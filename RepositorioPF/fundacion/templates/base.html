@@ -35,6 +35,7 @@
 				<a href="{% url 'logout' %}">LOGOUT</a>
 				{% else %}
 				<a href="{% url 'login' %}">LOGIN</a>
+				<a href="{% url 'usuarios:registro' %}">REGISTRARSE</a>
 				{% endif %}
 				<!--logout-->
 
@@ -44,37 +45,6 @@
 		{% block contenido %}
 
         {% endblock contenido %}
-<section>
-    <div id="about_us">
-        <div class="contact_content">
-        
-        <div class="titulo_section">Sobre nosotros!</div>
-            <div class="about_us_text">
-                “Botella de Amor” es un proyecto sin fines de lucro dedicado al desarrollo sostenible y mejoramiento de las condiciones de vida de las comunidades, con el objetivo principal de reducir los residuos plásticos en el ambiente, ya que son altamente contaminantes.
-            </div>
-        </div>
-    </div>
-</section> <!--nosotros-->
-        
-<section>
-    <div id="contact_us">
-        <div class="contact_content">
-                    
-            <div class="titulo_section">Contactate con nosotros!</div>
-            <div id="map"><iframe src="https://www.google.com/maps/d/embed?mid=1QBrPiv4TC7PHydND-XuRq2vPXHZBIkAE&ehbc=2E312F" width="980" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
-                    
-            <form id="contact_form" action="{Acá va la función que envía lo completado a un determinado email}" target="_blank">
-        
-                <input type="text" placeholder="Nombre y apellido" id="name" name="name" required minlength="4" maxlength="8" size="10">
-                <input type="tel" placeholder="Teléfono" id="tel" name="tel" required minlength="4" maxlength="8" size="10">
-                <input type="email" placeholder="Correo electrónico" id="email" name="email" required minlength="4" maxlength="8" size="10">
-                <textarea name="textarea" rows="10" cols="50" placeholder="¿Cómo te podemos ayudar?"></textarea>
-                <button type="submit">ENVIAR</button>
-                    
-            </form>
-                
-        </div>
-    </div>-->
-</section> <!--contacto-->
+
 </body>
 </html>

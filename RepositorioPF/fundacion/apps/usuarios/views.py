@@ -6,9 +6,8 @@ from .forms import RegistroForm
 # Create your views here.
 
 class Registro(CreateView):
+	# FORMULARIO DJANGO
 	form_class = RegistroForm
 	success_url = reverse_lazy('login')
 	template_name = 'usuarios/registro.html'
 
-
-# Create your views here.
