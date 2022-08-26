@@ -4,5 +4,5 @@ from . import views
 app_name = 'eventos'
 
 urlpatterns = [
-    # Falta poner la URL
+    path('listar_eventos/', views.ListarEventos, name = 'listar_eventos'),
 ]

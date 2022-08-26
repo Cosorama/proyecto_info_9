@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<section>
+	<div class="index_content">
+		<div class="content_margin_noticas">
+
+			{% for n in eventos %}
+				<h2>{{ n.titulo }}</h2>
+				<p>CATEGORIA: {{ n.categoria.nombre }}</p>
+				
+				<p>CUERPO: {{ n.detalle }}</p>
+                <p>Modalidad: {{ n.modalidad.nombre }}</p>
+                <p>Costo: {{ n.costo.nombre }}</p>
+                <p>Lugar: {{ n.lugar }}</p>
+                <p>Fecha: {{ n.fecha }}</p>
+
+				{% if n.imagen %}
+					<img src="{{ n.imagen.url }}" width="100px" height="100px">
+				{% endif %}
+				
+			{% endfor %}
+		</div>
+	</div>
+</section> <!--fin section-->
+{% endblock contenido %}
