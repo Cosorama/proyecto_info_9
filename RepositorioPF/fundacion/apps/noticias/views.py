@@ -36,6 +36,6 @@ def Agregar_Comentario(request,pk):
 	#Forma 1 (es la mejor para este caso)
 	noti = Noticia.objects.get(pk = pk)
 
-	c = Comentario.objects.create(noticia = noti, texto = texto_comentario, usuario = request.user)
+	Comentario.objects.create(noticia = noti, texto = texto_comentario, usuario = request.user)
 
 	return HttpResponseRedirect(reverse_lazy('noticias:noticia_detail' , kwargs={'pk':pk}))
