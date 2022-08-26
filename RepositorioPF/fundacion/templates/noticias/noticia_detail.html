@@ -20,11 +20,22 @@
 	{% if object.imagen %}
 		<img src="{{ object.imagen.url }}" width="100px" height="100px">
 	{% endif %}
+
+	<h1>COMENTARIOS</h1><br>
+	{% for x in object.obtener_mis_comentarios %}
+		<b><p>{{x.usuario}}-->{{x.creado}}</p></b>
+		
+		<p>{{x.texto}}</p>
+	{% endfor %}
+
 	
-	<a href=""></a>
-		<button class="boton_comentar">
-			Comentar
-		</button>
+		<form method="POST" action="{% url 'noticias:agregar_comentario' object.pk %}">{% csrf_token %}
+			<textarea rows="5" name="coment">
+				
+			</textarea>
+			<button class="boton_comentar" type="submit">COMENTAR</button>
+		</form>
+	
 
 </div>
 
