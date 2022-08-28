@@ -1,18 +1,19 @@
 from django.shortcuts import render
 from django.db.models import QuerySet
-from .forms import FiltroCategoria
+from .forms import FiltroCategoriaEvento
 from .models import Evento
 # Create your views here.
 
 def ListarEventos(request):
 
-    formulario = FiltroCategoria()
+    formulario = FiltroCategoriaEvento()
     
     ctx = {}
     
     ctx['form'] = formulario
 
     categoria = request.GET.get("categoria")
+    
     if categoria:
         todas = Evento.objects.filter(categoria = categoria)
     else:

@@ -1,5 +1,5 @@
 from django import forms
 from .models import CategoriaEvento
 
-class FiltroCategoria(forms.Form):
+class FiltroCategoriaEvento(forms.Form):
     categoria = forms.ModelChoiceField(queryset = CategoriaEvento.objects.all())

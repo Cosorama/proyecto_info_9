@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
-from .forms import Filtro
+from .forms import FiltroCategoriaNoticia
 from django.db.models import Q
 from .models import Noticia, Comentario
 # Create your views here.
@@ -17,13 +17,17 @@ def Listar(request):
     ctx = {}
     # Buscar las noticias en la base de datos
     # Pasarlo al template
-    filtro = Filtro()
+    filtro = FiltroCategoriaNoticia()
+    
     ctx['formulario_filtro'] = filtro
+    
     todas = Noticia.objects.all() # si quiero que me traiga menos noticias --> [:3] 
+    
     filtro_categoria = request.GET.get("categoria")
-    filtro_fecha = request.GET.get("fecha")
-    if filtro_categoria or filtro_fecha:
-        todas = Noticia.objects.filter(Q(categoria = filtro_categoria) | Q(creado = filtro_fecha))
+    # filtro_fecha = request.GET.get("fecha")
+    
+    if filtro_categoria:
+        todas = Noticia.objects.filter(categoria = filtro_categoria)
     else:
         todas = Noticia.objects.all()
     ctx['notis'] = todas
