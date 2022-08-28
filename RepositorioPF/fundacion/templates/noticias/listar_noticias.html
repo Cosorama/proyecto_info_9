@@ -4,7 +4,7 @@
 {% block contenido %}
 <section>
 
-	<h1>Filtros</h1>
+	<h1>Filtros categoria</h1>
 	<form action="." method="GET">
 		<div>
 			{{ formulario_filtro.categoria }}
@@ -14,12 +14,23 @@
 		</div>
 	</form>	
 
+	<h1>Filtros fecha</h1>
+	<form action="." method="GET">
+		<div>
+			{{ formulario_fecha.fecha }}
+			<button class="boton-filtrar" type="submit">
+				Filtrar
+			</button>
+		</div>
+	</form>
+
 	<div class="index_content">
 		<div class="content_margin_noticas">
 
 			{% for n in notis %}
 				<h2>{{ n.titulo }}</h2>
 				<p>CATEGORIA: {{ n.categoria.nombre }}</p>
+				<p>FECHA: {{ n.creado }}</p>
 				{% if n.autor %}
 					<p>AUTOR: {{ n.autor }}</p>
 				{% endif %}
