@@ -24,7 +24,6 @@ class CostoEvento(models.Model):
         return self.nombre
 
 
-
 class Evento(models.Model):
     titulo = models.CharField(max_length=120)
     detalle = models.TextField()
@@ -32,7 +31,7 @@ class Evento(models.Model):
     categoria = models.ForeignKey(CategoriaEvento, on_delete=models.CASCADE, null=True)
     fecha = models.DateField()
     modalidad = models.ForeignKey(ModalidadEvento, on_delete=models.CASCADE, null=True)
-    lugar = models.CharField(max_length=120)
+    lugar = models.CharField(max_length=120, null=True, blank=True)
     costo = models.ForeignKey(CostoEvento, on_delete=models.CASCADE, null=True)
 
     def __str__(self):

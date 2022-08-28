@@ -3,6 +3,18 @@
 
 {% block contenido %}
 <section>
+
+	<h1>Filtros</h1>
+	<form action="." method="GET">
+		<div>
+			{{ formulario_filtro.categoria }}
+			{{ formulario_filtro.fecha }}
+			<button class="boton-filtrar" type="submit">
+				Filtrar
+			</button>
+		</div>
+	</form>	
+
 	<div class="index_content">
 		<div class="content_margin_noticas">
 
