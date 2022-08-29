@@ -30,6 +30,7 @@
 				{% if n.imagen %}
 					<img src="{{ n.imagen.url }}" width="100px" height="100px">
 				{% endif %}
+				<a href="{% url 'eventos:evento_detail' n.pk %}">VER MAS</a>
 				
 			{% endfor %}
 		</div>

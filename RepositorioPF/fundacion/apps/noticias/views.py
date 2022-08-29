@@ -27,7 +27,7 @@ def Listar(request):
     
     filter_date = request.GET.get("fecha")
     filtro_categoria = request.GET.get("categoria")
-    # filtro_fecha = request.GET.get("fecha")
+    
     
     if filtro_categoria:
         todas = Noticia.objects.filter(categoria = filtro_categoria)
@@ -41,7 +41,7 @@ def Listar(request):
     return render(request, 'noticias/listar_noticias.html', ctx)
         
 
-class Detalle_Noticia_Clase (DetailView):
+class Detalle_Noticia_Clase(DetailView):
     model = Noticia
     template_name: 'noticias/noticia_detail.html'
 

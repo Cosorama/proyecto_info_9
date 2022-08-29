@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.db.models import QuerySet
 from .forms import FiltroCategoriaEvento
 from .models import Evento
+from django.views.generic.detail import DetailView
 # Create your views here.
 
 def ListarEventos(request):
@@ -21,3 +22,7 @@ def ListarEventos(request):
     ctx['eventos'] = todas
 
     return render(request, 'eventos/listar_eventos.html', ctx)
+
+class Detalle_Evento_Clase(DetailView):
+    model = Evento
+    template_name: 'eventos/evento_detail.html'
