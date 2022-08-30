@@ -5,40 +5,24 @@
 <div class="content_noticia_detalle" id="noticias">
 	<div class="content_margin_noticas">
 		<div class="contenedor_noticia">
-			<div class="imagen_noticia">{% if n.imagen %}<img src="{{ n.imagen.url }}">{% endif %}</div>
-			<div class="autor_categoria_detalle"><i><b>{{ object.categoria.nombre }}</b></i></p></div>
+			{% for n in eventos %}
+			<a href="{% url 'eventos:evento_detail' n.pk %}">
+				<div class="imagen_noticia">{% if n.imagen %}<img src="{{ n.imagen.url }}">{% endif %}</div>
+				<div class="titulo_detalle">Titulo: {{ n.titulo }}</div>
+			</a>
+			<div class="cuerpo_detalle">Detalle: {{ n.detalle }}</div>
 
-			<div class="titulo_detalle">{{object.titulo}}</div>
+			<div class="cuerpo_detalle">Categoria: {{ n.categoria.nombre }}</div>
 
-			<div class="cuerpo_detalle">{{ object.cuerpo }}</div>
+			<div class="cuerpo_detalle">Fecha: {{ n.fecha }}</div>
 
-			{% if object.autor %}
-			<div class="autor_categoria_detalle">Por: <b>{{ object.autor }}</b></div>
-			{% endif %}
+			<div class="cuerpo_detalle">Modalidad: {{ n.modalidad.nombre }}</div>
 
-			<div class="content_form_detalle">
-				<br><br>
-				<hr>
-				<h4>COMENTARIOS</h4>
-				{% for x in object.obtener_mis_comentarios %}
-					<b><i><p>{{x.usuario}}</b></i>: {{x.creado}}</p>
-					
-					<p>{{x.texto}}</p>
-				{% endfor %}
-				<hr>
-				{% if user.is_authenticated %}
+			<div class="cuerpo_detalle">Lugar: {{ n.lugar }}</div>
 
-					<form id="form_comment" method="POST" action="{% url 'noticias:agregar_comentario' object.pk %}">{% csrf_token %}
-						<textarea id="textarea_comment" rows="5" name="coment" placeholder="¿Qué opinás de este artículo?"></textarea>
-						<button class="boton_comentar" type="submit">COMENTAR</button>
-					</form>
+			<div class="cuerpo_detalle">Costo: {{ n.costo.nombre }}</div>
 
-				{% else %}
-
-					<a class="boton_login" href="{% url 'login' %}">Comentar</a>
-
-				{% endif %}
-
+			{% endfor %}
 			</div>
 		</div>
 	</div>
