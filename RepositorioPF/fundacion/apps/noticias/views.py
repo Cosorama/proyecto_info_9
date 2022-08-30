@@ -23,7 +23,7 @@ def Listar(request):
     filtro_fecha = FiltroFechaNoticia()
     ctx['formulario_fecha'] = filtro_fecha
     
-    todas = Noticia.objects.all() # si quiero que me traiga menos noticias --> [:3] 
+    # todas = Noticia.objects.all() # si quiero que me traiga menos noticias --> [:3] 
     
     filter_date = request.GET.get("fecha")
     filtro_categoria = request.GET.get("categoria")

@@ -1,30 +1,39 @@
-{% extends 'base.html' %}
+{% extends 'base_noticias.html' %}
 {% load static %}
 
 {% block contenido %}
-<div class="content_noticia_detalle" id="noticias">
-	<div class="content_margin_noticas">
-		<div class="contenedor_noticia">
+<section>
+
+	<h1>Filtros</h1>
+	<form action="." method="GET">
+		<div>
+			{{ form.categoria }}
+			<button class="boton-filtrar" type="submit">
+				Filtrar
+			</button>
+		</div>
+	</form>				
+	
+	<div class="index_content">
+		<div class="content_margin_noticas">
+
 			{% for n in eventos %}
-			<a href="{% url 'eventos:evento_detail' n.pk %}">
-				<div class="imagen_noticia">{% if n.imagen %}<img src="{{ n.imagen.url }}">{% endif %}</div>
-				<div class="titulo_detalle">Titulo: {{ n.titulo }}</div>
-			</a>
-			<div class="cuerpo_detalle">Detalle: {{ n.detalle }}</div>
+				<h2>{{ n.titulo }}</h2>
+				<p>CATEGORIA: {{ n.categoria.nombre }}</p>
+				
+				<p>CUERPO: {{ n.detalle }}</p>
+                <p>Modalidad: {{ n.modalidad.nombre }}</p>
+                <p>Costo: {{ n.costo.nombre }}</p>
+                <p>Lugar: {{ n.lugar }}</p>
+                <p>Fecha: {{ n.fecha }}</p>
 
-			<div class="cuerpo_detalle">Categoria: {{ n.categoria.nombre }}</div>
-
-			<div class="cuerpo_detalle">Fecha: {{ n.fecha }}</div>
-
-			<div class="cuerpo_detalle">Modalidad: {{ n.modalidad.nombre }}</div>
-
-			<div class="cuerpo_detalle">Lugar: {{ n.lugar }}</div>
-
-			<div class="cuerpo_detalle">Costo: {{ n.costo.nombre }}</div>
-
+				{% if n.imagen %}
+					<img src="{{ n.imagen.url }}" width="100px" height="100px">
+				{% endif %}
+				<a href="{% url 'eventos:evento_detail' n.pk %}">VER MAS</a>
+				
 			{% endfor %}
-			</div>
 		</div>
 	</div>
-</div>
+</section> <!--fin section-->
 {% endblock contenido %}

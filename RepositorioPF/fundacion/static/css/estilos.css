@@ -3,16 +3,16 @@
     *{
         font-family: Arial;
     }
-
-
+    
+    ::-webkit-scrollbar{
+        display: none;
+    
+    }
+    
     body{
         margin: 0;
         padding: 0;
-        
-    }
-
-    body::-webkit-scrollbar{
-        display: none;
+    
     
     }
     
@@ -20,9 +20,7 @@
         width: 100vw;
     
         background: #ffea00 url(../img/background_header.png) no-repeat;
-        background-size:calc(100%);
-
-        object-fit: cover;
+        background-size: 100%;
     
         margin-top: -15vh;
     
@@ -30,7 +28,7 @@
     }
     
     .container{ /*a las clases se le aplica estilo con .nombre_de_clase*/
-        width: 50vw;
+        width: 45vw;
         height: 14vh;
     
         margin: 0 auto;
@@ -39,6 +37,7 @@
     
     .logo_header img{
         width: 8vw;
+        height: 13vh;
     
         float: left;
     }
@@ -53,23 +52,16 @@
     .menu ul li{
         list-style: none;
         display: inline-block;
-        padding: 1vw 0.2vh;
-    }
-
-    li span{
-        list-style: none;
-        display: inline-block;
-        font-size: 0.9vw;
-        color: #ff9600;
+        padding: 1vw 0.5vh;
     }
     
     .menu ul li a{
     
         color: #302b27;
         text-decoration: none;
-        font-size: 0.9vw;
+        font-size: 1vw;
         font-weight: bold;
-        padding: 1em 0.2em;
+        padding: 1em 0.5em;
         -webkit-transition: 0.3s;
         -moz-transition: 0.3s;
         -ms-transition: 0.3s;
@@ -121,14 +113,10 @@
         height: 40vh;
         
         color: #302b27;
-        background-color: white;
+        background-color: #fff;
     
         margin-top: 15vh;
         margin-left: 1vw;
-
-        filter: grayscale(0.7);
-        transition-property: filter;
-        transition-duration: 1s;   
     
         float: left;
     
@@ -146,17 +134,8 @@
     }
     
     .outstanding:hover{
-        background-color: white;
-        color: #ff9600;
-
-        filter: grayscale(0);
-
-        -webkit-box-shadow: 0 0 2vw rgba(66,181,58,0.5);
-        -moz-box-shadow: 0 0 2vw rgba(66,181,58,0.5);
-        -ms-box-shadow: 0 0 2vw rgba(66,181,58,0.5);
-        -o-box-shadow: 0 0 2vw rgba(66,181,58,0.5);
-        box-shadow: 0 0 2vw rgba(66,181,58,0.5);
-
+        color: #5db21f;
+    
         -webkit-transition: 0.2s;
         -moz-transition: 0.2s;
         -ms-transition: 0.2s;
@@ -173,13 +152,10 @@
         margin-top: 5vh;
     
         background-color: #a5eae9;
-        
     }
 
     #img_news img{
-        width: calc(100%);
-        height: calc(100%);
-        object-fit: cover;
+        width: 100%;
     }
     
     #title_news{
@@ -215,56 +191,6 @@
         -o-transition: 0.3s;
         transition: 0.3s;
     }
-
-    .index_content_listas{
-        width: 100vw;
-        height: 85vh;
-    
-        margin-top: 15vh;
-    
-        background: #ffea00 url(../img/background_section.png) center center no-repeat;
-        background-size: 100%;
-
-    }
-
-    .content_margin_noticas_listas{
-        width: 85vw;
-        height: 55vh;
-
-        overflow-y: auto;
-
-        margin: 0 auto;
-    }
-
-    .content_margin_noticas_listas::-webkit-scrollbar{
-        width: 0.5vw;
-
-        background-color: rgba(66,181,58,0.5);
-    }
-
-    .content_margin_noticas_listas::-webkit-scrollbar-thumb{
-        background-color: #ff9600;
-    }
-
-    /*detalles_eventos*/
-
-    #detalles_evento{
-        width: 16vw;
-        height: auto;
-
-        font-size: 1vw;
-
-        background-color: #e5e5e5;
-        
-        margin: 5vh auto;
-
-        padding: 5vh;
-    }
-
-    .portrait_view{
-        display: none;
-    }
-
     
     /*SOBRE NOSOSTROS*/
     
@@ -329,7 +255,7 @@
     }
     
     /*formulario*/
-    #contact_form{
+    form{
         width: 20vw;
         height: 32vh;
     
@@ -341,7 +267,7 @@
     
     input{
         width: 20vw;
-        height: 3vh;
+        height: 4vh;
     
         font-size: 1.5vh;
     
@@ -356,7 +282,7 @@
     
     textarea{
         width: 20vw;
-        height: 10vh;
+        height: 15vh;
     
         font-size: 1.5vh;
     
@@ -370,7 +296,7 @@
     }
     
     button{
-        width: 21vw;
+        width: 20vw;
         height: 4vh;
     
         font-size: 2vh;
@@ -392,7 +318,7 @@
     }
     
     button:hover{
-        width: 21vw;
+        width: 20vw;
         height: 4vh;
     
         font-size: 2.2vh;
@@ -412,471 +338,288 @@
         -o-transition: 0.1s;
         transition: 0.1s;
     }
-
-    .align_form{
-        width: 30vw;
-        height: 20vh;
     
-        margin: 0 auto;
-        margin-top: 10vh;
-        padding: 5vh;
-    }
+    } /*fin media orientation landscape*/
     
-    #formulario_registro{
-        width: 21vw;
-        height: auto;
-    
-        margin: 0 auto;
-
-        background-color: white;
-        padding: 5vh;
-
-        margin-top: 10vh;
-  
-    }
-
-    /*noticia detalle*/
-
-    .content_noticia_detalle{
-        width: 100vw;
-        height: auto;
-    
-        margin-top: 15vh;
-
-        padding-bottom: 5vh;
-    
-        background: #ffea00 url(../img/background_section.png) center center repeat;
-        background-size: 100%;
-    }
-
-    .contenedor_noticia{
-        width: 45vw;
-        height: auto;
-    
-        margin: 0 auto;
-
-        padding: 5vh;
-    
-        background: white;
-        background-size: 100%;
-    }
-
-    .imagen_noticia{
-        width: 45vw;
-        height: 20vh;
-
-        margin: 0 auto;
-    
-        background-color: #a5eae9;
-    }
-
-    .imagen_noticia img{
-        width: calc(100%);
-        height: calc(100%);
-        object-fit: cover;
-    }
-
-    .titulo_detalle{
-        font-size: 2vw;
-    }
-
-    .autor_categoria_detalle{
-        font-size: 0.8vw;
-        padding-top: 1vh;
-    }
-
-    .cuerpo_detalle{
-        font-size: 1vw;
-        
-        padding-top: 2vh;
-
-        line-height: 1.7;
-    }
-
-    .content_form_detalle{
-
-        width: 30vw;
-        height: auto;
-
-        font-size: 1vw;
-    }
-
-    #form_comment{
-        width: 30vw;
-        height: auto;
-    
-        margin: 0 auto;
-        text-align: left;
-    }
-
-    #textarea_comment{
-        width: 29vw;
-    }
-
-    .boton_comentar{
-        width: 30vw;
-    }
-
-    .boton_comentar:hover{
-        width: 30vw;
-    }
-
-    /*filtros*/
-
-    #form_filtros{
-        width: 14vw;
-        height: auto;
-
-        margin-left: 1vw;
-
-        margin-top: 3vh;
-
-        position: absolute;
-    }
-
-    select{
-        width: 10vw;
-        height: auto;
-
-        font-size: 1.5vh;
-
-        padding: 1vh;
-
-        border: none;
-        resize: none;
-        outline: none;
-
-        float: left;
-
-        border-top-left-radius: 5vw;
-        border-bottom-left-radius: 5vw;
-    
-        background-color: #fff;
-    }
-    
-
-    #boton-filtrar{
-        width: 2.5vw;
-        height: 3.9vh;
-
-        float: left;
-
-        background-color: #5eb21f;
-
-        border-top-right-radius: 5vw;
-        border-bottom-right-radius: 5vw;
-
-        margin-top: 0;
-
-        -webkit-transition: 0.3s;
-        -moz-transition: 0.3s;
-        -ms-transition: 0.3s;
-        -o-transition: 0.3s;
-        transition: 0.3s;
-    }
-
-    #boton-filtrar:hover{
-        width: 3vw;
-
-        background-color: #ff9600;
-
-        -webkit-transition: 0.3s;
-        -moz-transition: 0.3s;
-        -ms-transition: 0.3s;
-        -o-transition: 0.3s;
-        transition: 0.3s;
-    }
-
-    #boton-filtrar img{
-        height: calc(100%);
-        object-fit: cover;
-    }
-
-    /*ADAPTADO FORMULARIO REGISTRO*/
-
-    #formulario_registro_adaptado{
-        width: 21vw;
-
-        padding-top: 1.5vh;
-        padding-left: 2vw;
-        padding-right: 2vw;
-        padding-bottom: 4vh;
-
-        background-color: white;
-    }
-
-    label{
-        display: none;
-    }
-
-    .helptext{
-        font-size: 1.5vh;
-
-        color: #8e8e8e;
-
-        font-style: italic;
-    }
-
-}/*fin media orientation landscape*/
-    
-@media screen and (orientation: portrait){
-    
-    .portrait_view{
-
-        width: 25vw;
-        height: auto;
-
-        font-weight: bold;
-
-        margin-top: 10vh;
-
-        padding-left: 6vw;
-        
-    }
+    @media screen and (orientation: portrait){
     *{
         font-family: Arial;
     }
     
-
-
-    body{
-        width: 100vw;
-        height: 100vh;
-
-        margin: 0;
-        padding: 0;
-
-        background-color: yellow;
-        
-    }
-
-    body::-webkit-scrollbar{
+    ::-webkit-scrollbar{
         display: none;
     
+    }
+    
+    body{
+        margin: 0;
+        padding: 0;
     }
     
     header{
-        display: none;
+        width: 100vw;
+    
+        background: #ffea00 url(../img/background_header.png) no-repeat;
+    
+        margin-top: -15vh;
+    
+        position: fixed;
     }
     
     .container{ /*a las clases se le aplica estilo con .nombre_de_clase*/
-        display: none;
+        width: 35vw;
+        height: 14vh;
+    
+        margin: 0 auto;
+        padding-top: 1vh;
     }
     
     .logo_header img{
-        display: none;
+        width: 35vw;
+        height: 13vh;
     }
     
     .menu ul{
-        display: none;
+        margin-top: 4vh;
+        padding-top: 0;
     }
     
     .menu ul li{
-        display: none;
+        list-style: none;
+        display: inline-block;
+        padding: 1vw 0.5vh;
     }
     
     .menu ul li a{
-        display: none;
+    
+        color: #302b27;
+        text-decoration: none;
+        font-size: 1vw;
+        font-weight: bold;
+        padding: 1em 0.5em;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
     }
     
     .menu ul li a:hover{
-        display: none;
+        color: #fff;
+        background-color: #ff9600;
+    
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
     }
     /*FIN DEL HEADER*/
     section{
-        display: none;
+        width: 100vw;
+        
+        margin: 0;
+        padding: 0;
+    
+        background-color: white;
     }
     
     .index_content{
-        display: none;
+        width: 100vw;
+        height: auto;
+    
+        margin-top: 15vh;
+    
+        background: #ffea00 url(../img/background_section.png) center center no-repeat;
+        background-size: 300%;
     }
     
     .content_margin{
-        display: none;
+        width: 70vw;
+        height: 134vh;
+    
+        overflow: hidden;
+    
+        margin: 0 auto;
     }
     
+    .content_margin_noticas{
+        width: 70vw;
+        height: 1000vh;
+    
+        overflow: hidden;
+    
+        margin: 0 auto;
+    }
+
     .outstanding{
-        display: none;
+        width: 70vw;
+        height: 40vh;
+        
+        color: #302b27;
+        background-color: #fff;
+    
+        margin-top: 0.5vh;
+    
+        -webkit-transition: 0.2s;
+        -moz-transition: 0.2s;
+        -ms-transition: 0.2s;
+        -o-transition: 0.2s;
+        transition: 0.2s;
+    
+        -webkit-box-shadow: 0 0 1vw rgba(66,181,58,0.5);
+        -moz-box-shadow: 0 0 1vw rgba(66,181,58,0.5);
+        -ms-box-shadow: 0 0 1vw rgba(66,181,58,0.5);
+        -o-box-shadow: 0 0 1vw rgba(66,181,58,0.5);
+        box-shadow: 0 0 1vw rgba(66,181,58,0.5);
     }
     
     .outstanding:hover{
-        display: none;
+        color: #5db21f;
+    
+        -webkit-transition: 0.2s;
+        -moz-transition: 0.2s;
+        -ms-transition: 0.2s;
+        -o-transition: 0.2s;
+        transition: 0.2s;
     }
     
     
     #img_news{
-        display: none;
-    }
-
-    #img_news img{
-        display: none;
+        width: 70vw;
+        height: 28vh;
+    
+        margin: 0 auto;
+        margin-top: 3vh;
+    
+        background-color: #a5eae9;
     }
     
     #title_news{
-        display: none;
+        width: 60vw;
+        height: 7vh;
+    
+        margin: 0 auto;
+        margin-top: 2vh;
+    
+        font-size: 2vh;
+        font-weight: bold;
+
+        word-wrap: break-word;
+        overflow: hidden;
     }
     
     #title_news a{
-        display: none;
-    }
-
-    .index_content_listas{
-        display: none;
-
-    }
-
-    .content_margin_noticas_listas{
-        display: none;
-    }
-
-    .content_margin_noticas_listas::-webkit-scrollbar{
-        display: none;
-    }
-
-    .content_margin_noticas_listas::-webkit-scrollbar-thumb{
-        display: none;
-    }
-
+        width: 50vw;
     
-    /*SOBRE NOSOSTROS*/
+        margin: 0 auto;
+        margin-top: 2vh;
     
+        font-size: 2vh;
+        font-weight: bold;
     
-    /*CONTACTO*/
-    
-    .contact_content{
-        display: none;
+        overflow: hidden;
+        word-wrap: break-word;
+
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
     }
-    
-    .titulo_section{
-        display: none;
-    }
-    
     
     .about_us_text{
-        display: none;
+        font-size: 2.5vh;
     }
     
     #map{
-        display: none;
+        width: 100vw;
+        height: 19.2vh;
+    
+        overflow:hidden;
+    
+        padding:0;
+    
+        border: none;
+    
+        margin: 0 auto;
+        margin-top: 1vh;
+    
+        background-color: #a5eae9;
     }
     
     .map iframe{
-        display: none;
+        border: none;
+    
+        left:0;
+        top:0;
+        height:100%;
+        width:100%;
+
+    
     }
     
-    /*formulario*/
-    #contact_form{
-        display: none;
-    }
-    
-    input{
-        display: none;
-    }
-    
-    textarea{
-        display: none;
-    }
-    
-    button{
-        display: none;
-    }
-    
-    button:hover{
-        display: none;
-    }
+/*formulario*/
+form{
+    width: 80vw;
+    height: 32vh;
 
-    .align_form{
-        display: none;
-    }
-    
-    #formulario_registro{
-        display: none;
-    }
-
-    /*noticia detalle*/
-
-    .content_noticia_detalle{
-        display: none;
-    }
-
-    .contenedor_noticia{
-        display: none;
-    }
-
-    .imagen_noticia{
-        display: none;
-    }
-
-    .imagen_noticia img{
-        display: none;
-    }
-
-    .titulo_detalle{
-        display: none;
-    }
-
-    .autor_categoria_detalle{
-        display: none;
-    }
-
-    .cuerpo_detalle{
-        display: none;
-    }
-
-    .content_form_detalle{
-        display: none;
-    }
-
-    #form_comment{
-        display: none;
-    }
-
-    #textarea_comment{
-        display: none;
-    }
-
-    .boton_comentar{
-        display: none;
-    }
-
-    .boton_comentar:hover{
-        display: none;
-    }
-
-    /*filtros*/
-
-    #form_filtros{
-        display: none;
-    }
-
-    select{
-        display: none;
-    }
-    
-
-    #boton-filtrar{
-        display: none;
-    }
-
-    #boton-filtrar:hover{
-        display: none;
-    }
-
-    #boton-filtrar img{
-        display: none;
-    }
-
-    /*ADAPTADO FORMULARIO REGISTRO*/
-
-    #formulario_registro_adaptado{
-        display: none;
-    }
-
-    label{
-        display: none;
-    }
-
-    .helptext{
-        display: none;
-    }
+    margin: 0 auto;
+    padding-right: 2vw;
 }
+
+input{
+    width: 60vw;
+    height: 4vh;
+
+    font-size: 1.5vh;
+
+    margin-top: 1vh;
+    padding: 1vh;
+    border: none;
+    resize: none;
+    outline: none;
+
+    background-color: #e5e5e5;
+}
+
+textarea{
+    width: 60vw;
+    height: 15vh;
+
+    font-size: 1.5vh;
+
+    margin-top: 1vh;
+    padding: 1vh;
+    border: none;
+    resize: none;
+    outline: none;
+
+    background-color: #e5e5e5;
+}
+
+button{
+    width: 60vw;
+    height: 4vh;
+
+    font-size: 2vh;
+    font-weight: bold;
+    
+    margin-top: 1vh;
+    border: none;
+    resize: none;
+    outline: none;
+
+    color: #302b27;
+    background-color: #ffea00;
+
+    -webkit-transition: 0.1s;
+    -moz-transition: 0.1s;
+    -ms-transition: 0.1s;
+    -o-transition: 0.1s;
+    transition: 0.1s;
+}
+
+
+    
+    } /*Fin portrait*/

@@ -9,7 +9,7 @@
 	<meta name="description" content="Practica para el proyecto de informatorio">
 	<meta name="keywords" content="reducir, reciclar, reutilizar">
 
-	<link rel="stylesheet" href="{% static 'css/estilos.css' %}" type="text/css"/> <!--Estilos general-->
+	<link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css"/> <!--Estilos general-->
     
     <script type="text/javascript" src="{% static 'js/jquery-1.7.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
@@ -25,20 +25,21 @@
 			
 			<ul>
 				<li><a href="{% url 'home' %}">Inicio</a></li>
-				<li><a href="#about_us">Nosotros</a></li>
-				<li><a href="#contact_us">Contacto</a></li>
 				<li><a href="{% url 'noticias:listar_noticias' %}">Noticias</a></li>
 				<li><a href="{% url 'eventos:listar_eventos' %}">Eventos</a></li>
+				<li><a href="{% url 'eventos:calendario' %}">Calendario</a></li>
+				<li><a href="#about_us">Nosotros</a></li>
+				<li><a href="#contact_us">Contacto</a></li>
+			</ul>
 				<!--revisar caso de login-->
 				{% if user.is_authenticated %}
-				<li><span><b>Hola, <i>{{user.username}}</i></b></span></li>
-				<li><a href="{% url 'logout' %}">Logout</a></li>
+				<span>HOLA {{user.username}}!!</span>
+				<a href="{% url 'logout' %}">LOGOUT</a>
 				{% else %}
-				<li><a href="{% url 'login' %}">Ingresá</a></li>
-				<li><a href="{% url 'usuarios:registro' %}">Unite</a></li>
+				<a href="{% url 'login' %}">LOGIN</a>
+				<a href="{% url 'usuarios:registro' %}">REGISTRARSE</a>
 				{% endif %}
 				<!--logout-->
-			</ul>
 
 		</div>
 	</div>
@@ -46,36 +47,6 @@
 		{% block contenido %}
 
         {% endblock contenido %}
-<section>
-    <div id="about_us">
-        <div class="contact_content">
-        
-        <div class="titulo_section">Sobre nosotros!</div>
-            <div class="about_us_text">
-                “Botella de Amor” es un proyecto sin fines de lucro dedicado al desarrollo sostenible y mejoramiento de las condiciones de vida de las comunidades, con el objetivo principal de reducir los residuos plásticos en el ambiente, ya que son altamente contaminantes.
-            </div>
-        </div>
-    </div>
-</section> <!--nosotros-->
-<section>
-    <div id="contact_us">
-        <div class="contact_content">
-                    
-            <div class="titulo_section">Contactate con nosotros!</div>
-            <div id="map"><iframe src="https://www.google.com/maps/d/embed?mid=1QBrPiv4TC7PHydND-XuRq2vPXHZBIkAE&ehbc=2E312F" width="980" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
-                    
-            <form id="contact_form" action="{Acá va la función que envía lo completado a un determinado email}" target="_blank">
-        
-                <input type="text" placeholder="Nombre y apellido" id="name" name="name" required minlength="4" maxlength="10" size="10">
-                <input type="tel" placeholder="Teléfono" id="tel" name="tel" required minlength="4" maxlength="10" size="10">
-                <input type="email" placeholder="Correo electrónico" id="email" name="email" required minlength="4" maxlength="50" size="10">
-                <textarea name="textarea" rows="10" cols="50" placeholder="¿Cómo te podemos ayudar?"></textarea>
-                <button type="submit">ENVIAR</button>
-                    
-            </form>
-                
-        </div>
-    </div>-->
-</section> <!--contacto-->
+
 </body>
 </html>
