@@ -1,39 +1,46 @@
-{% extends 'base_noticias.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block contenido %}
-<section>
+<div class="content_noticia_detalle" id="noticias">
+	<div class="content_margin_noticas">
+		<div class="contenedor_noticia">
+			<div class="imagen_noticia">{% if n.imagen %}<img src="{{ n.imagen.url }}">{% endif %}</div>
+			<div class="autor_categoria_detalle"><i><b>{{ object.categoria.nombre }}</b></i></p></div>
 
-	<h1>Filtros</h1>
-	<form action="." method="GET">
-		<div>
-			{{ form.categoria }}
-			<button class="boton-filtrar" type="submit">
-				Filtrar
-			</button>
-		</div>
-	</form>				
-	
-	<div class="index_content">
-		<div class="content_margin_noticas">
+			<div class="titulo_detalle">{{object.titulo}}</div>
 
-			{% for n in eventos %}
-				<h2>{{ n.titulo }}</h2>
-				<p>CATEGORIA: {{ n.categoria.nombre }}</p>
-				
-				<p>CUERPO: {{ n.detalle }}</p>
-                <p>Modalidad: {{ n.modalidad.nombre }}</p>
-                <p>Costo: {{ n.costo.nombre }}</p>
-                <p>Lugar: {{ n.lugar }}</p>
-                <p>Fecha: {{ n.fecha }}</p>
+			<div class="cuerpo_detalle">{{ object.cuerpo }}</div>
 
-				{% if n.imagen %}
-					<img src="{{ n.imagen.url }}" width="100px" height="100px">
+			{% if object.autor %}
+			<div class="autor_categoria_detalle">Por: <b>{{ object.autor }}</b></div>
+			{% endif %}
+
+			<div class="content_form_detalle">
+				<br><br>
+				<hr>
+				<h4>COMENTARIOS</h4>
+				{% for x in object.obtener_mis_comentarios %}
+					<b><i><p>{{x.usuario}}</b></i>: {{x.creado}}</p>
+					
+					<p>{{x.texto}}</p>
+				{% endfor %}
+				<hr>
+				{% if user.is_authenticated %}
+
+					<form id="form_comment" method="POST" action="{% url 'noticias:agregar_comentario' object.pk %}">{% csrf_token %}
+						<textarea id="textarea_comment" rows="5" name="coment" placeholder="¿Qué opinás de este artículo?"></textarea>
+						<button class="boton_comentar" type="submit">COMENTAR</button>
+					</form>
+
+				{% else %}
+
+					<a class="boton_login" href="{% url 'login' %}">Comentar</a>
+
 				{% endif %}
-				<a href="{% url 'eventos:evento_detail' n.pk %}">VER MAS</a>
-				
-			{% endfor %}
+
+			</div>
 		</div>
 	</div>
-</section> <!--fin section-->
+</div>
 {% endblock contenido %}
