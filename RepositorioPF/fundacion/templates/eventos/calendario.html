@@ -1,0 +1,17 @@
+{% load static %}
+
+{% block contenido %}
+
+<br><br>
+<div class="main_div">
+
+	<h1>CALENDARIO EVENTOS</h1>
+
+    {% for n in calendario %}
+    <li>
+        <p>Fecha a realizarse el evento {{ n.titulo }}: {{ n.fecha }}</p>
+		<a href="{% url 'eventos:evento_detail' n.pk %}">VER MAS</a>
+	</li>			
+	{% endfor %}
+
+{% endblock contenido %}

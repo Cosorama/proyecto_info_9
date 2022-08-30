@@ -26,3 +26,9 @@ def ListarEventos(request):
 class Detalle_Evento_Clase(DetailView):
     model = Evento
     template_name: 'eventos/evento_detail.html'
+
+def CalendarioEventos(request):
+    ctx = {}
+    fechas = Evento.objects.filter().order_by('fecha')
+    ctx['calendario'] = fechas
+    return render(request, 'eventos/calendario.html', ctx)
