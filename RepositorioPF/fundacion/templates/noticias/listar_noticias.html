@@ -4,7 +4,7 @@
 {% block contenido %}
 <section>
 
-	<h1>Filtros categoria</h1>
+<div class="Filtros"><h1>Filtros categoria</h1>
 	<form action="." method="GET">
 		<div>
 			{{ formulario_filtro.categoria }}
@@ -23,6 +23,7 @@
 			</button>
 		</div>
 	</form>
+</div>
 
 	<div class="index_content">
 		<div class="content_margin_noticas">
@@ -45,4 +46,10 @@
 		</div>
 	</div>
 </section> <!--fin section-->
+
+<style>
+	.Filtros{
+		background-color: darkgoldenrod;
+	}
+</style>
 {% endblock contenido %}

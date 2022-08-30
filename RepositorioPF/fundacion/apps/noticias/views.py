@@ -10,29 +10,31 @@ from django.http import HttpResponseRedirect
 from .forms import FiltroCategoriaNoticia, FiltroFechaNoticia
 from django.db.models import Q
 from .models import Noticia, Comentario
+from datetime import datetime
 # Create your views here.
 
 def Listar(request):
-    # Crear el diccionario para pasar datos al template
-    ctx = {}
-    # Buscar las noticias en la base de datos
-    # Pasarlo al template
+    
+    ctx = {} # Crear el diccionario
+   
     filtro = FiltroCategoriaNoticia()
     ctx['formulario_filtro'] = filtro
 
     filtro_fecha = FiltroFechaNoticia()
     ctx['formulario_fecha'] = filtro_fecha
     
-    # todas = Noticia.objects.all() # si quiero que me traiga menos noticias --> [:3] 
     
     filter_date = request.GET.get("fecha")
+    
     filtro_categoria = request.GET.get("categoria")
     
     
     if filtro_categoria:
         todas = Noticia.objects.filter(categoria = filtro_categoria)
     elif filter_date:
-        todas = Noticia.objects.filter(creado = filter_date)
+        filter_date = filter_date.split("/")
+        fecha_nueva = datetime(int(filter_date[2]), int(filter_date[1]), int(filter_date[0]))
+        todas = Noticia.objects.filter(creado = fecha_nueva)
     else:
         todas = Noticia.objects.filter().order_by('-id')
     ctx['notis'] = todas
