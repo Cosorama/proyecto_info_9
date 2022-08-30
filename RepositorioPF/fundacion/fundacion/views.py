@@ -3,6 +3,6 @@ from apps.noticias.models import Noticia
 
 def Home(request):
     ctx = {}
-    ultimas_tres = Noticia.objects.filter().order_by('-creado')[:3]
+    ultimas_tres = Noticia.objects.filter().order_by('-id')[:3]
     ctx['notis'] = ultimas_tres
     return render(request, 'home.html', ctx)

@@ -18,7 +18,7 @@ def ListarEventos(request):
     if categoria:
         todas = Evento.objects.filter(categoria = categoria)
     else:
-        todas = Evento.objects.all()
+        todas = Evento.objects.filter().order_by('-id')
     ctx['eventos'] = todas
 
     return render(request, 'eventos/listar_eventos.html', ctx)

@@ -30,6 +30,7 @@ class Evento(models.Model):
     imagen = models.ImageField(upload_to='eventos', null=True, blank=True)
     categoria = models.ForeignKey(CategoriaEvento, on_delete=models.CASCADE, null=True)
     fecha = models.DateField()
+    creado = models.DateField(auto_now_add=True)
     modalidad = models.ForeignKey(ModalidadEvento, on_delete=models.CASCADE, null=True)
     lugar = models.CharField(max_length=120, null=True, blank=True)
     costo = models.ForeignKey(CostoEvento, on_delete=models.CASCADE, null=True)

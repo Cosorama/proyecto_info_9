@@ -34,7 +34,7 @@ def Listar(request):
     elif filter_date:
         todas = Noticia.objects.filter(creado = filter_date)
     else:
-        todas = Noticia.objects.all()
+        todas = Noticia.objects.filter().order_by('-id')
     ctx['notis'] = todas
     
     
