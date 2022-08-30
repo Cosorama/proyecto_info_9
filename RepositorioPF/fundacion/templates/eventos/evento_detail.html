@@ -1,4 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
+
+{% block contenido %}
 
 {% block contenido %}
 
@@ -16,6 +19,11 @@
         <p>Costo: {{ object.costo.nombre }}</p>
         <p>Lugar: {{ object.lugar }}</p>
         <p>Fecha: {{ object.fecha }}</p>
+
+		<div id="detalles_evento">
+
+
+		</div>
 
 		{% if n.imagen %}
 			<img src="{{ object.imagen.url }}" width="100px" height="100px">

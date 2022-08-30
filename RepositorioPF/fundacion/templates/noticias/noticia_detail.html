@@ -1,81 +1,46 @@
-{% extends 'base_noticias.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block contenido %}
-	
-<br><br>
-<div class="main_div">
+<div class="content_noticia_detalle" id="noticias">
+	<div class="content_margin_noticas">
+		<div class="contenedor_noticia">
+			<div class="imagen_noticia">{% if n.imagen %}<img src="{{ n.imagen.url }}">{% endif %}</div>
+			<div class="autor_categoria_detalle"><i><b>{{ object.categoria.nombre }}</b></i></p></div>
 
-	<h1>DETALLE NOTICIA</h1>
-	<br>
+			<div class="titulo_detalle">{{object.titulo}}</div>
 
-	<h2>{{object.titulo}}</h2>
-	<p>Categoria: {{ object.categoria.nombre }}</p>
-	{% if object.autor %}
-		<p>Autor: {{ object.autor }}</p>
-	{% endif %}
+			<div class="cuerpo_detalle">{{ object.cuerpo }}</div>
 
-	<p>Cuerpo: {{ object.cuerpo }}</p>
+			{% if object.autor %}
+			<div class="autor_categoria_detalle">Por: <b>{{ object.autor }}</b></div>
+			{% endif %}
 
-	{% if object.imagen %}
-		<img src="{{ object.imagen.url }}" width="100px" height="100px">
-	{% endif %}
+			<div class="content_form_detalle">
+				<br><br>
+				<hr>
+				<h4>COMENTARIOS</h4>
+				{% for x in object.obtener_mis_comentarios %}
+					<b><i><p>{{x.usuario}}</b></i>: {{x.creado}}</p>
+					
+					<p>{{x.texto}}</p>
+				{% endfor %}
+				<hr>
+				{% if user.is_authenticated %}
 
-	<h1>COMENTARIOS</h1><br>
-	{% for x in object.obtener_mis_comentarios %}
-		<b><p>{{x.usuario}}-->{{x.creado}}</p></b>
-		
-		<p>{{x.texto}}</p>
-	{% endfor %}
+					<form id="form_comment" method="POST" action="{% url 'noticias:agregar_comentario' object.pk %}">{% csrf_token %}
+						<textarea id="textarea_comment" rows="5" name="coment" placeholder="¿Qué opinás de este artículo?"></textarea>
+						<button class="boton_comentar" type="submit">COMENTAR</button>
+					</form>
 
-	{% if user.is_authenticated %}
+				{% else %}
 
-		<form method="POST" action="{% url 'noticias:agregar_comentario' object.pk %}">{% csrf_token %}
-			<textarea rows="5" name="coment">
-				
-			</textarea>
-			<button class="boton_comentar" type="submit">COMENTAR</button>
-		</form>
+					<a class="boton_login" href="{% url 'login' %}">Comentar</a>
 
-	{% else %}
+				{% endif %}
 
-		<a class="boton_login" href="{% url 'login' %}">Comentar</a>
-
-	{% endif %}
-
+			</div>
+		</div>
+	</div>
 </div>
-
-<style>
-
-	.main_div{
-		width: 55%;
-		margin: 100px auto;
-		background-color: aquamarine;
-	}
-
-	.boton_comentar{
-		outline: none;
-		border: none;
-		padding: 10px;
-		color: azure;
-		background: black;
-		border-radius: 5px;
-		display: block;
-		margin-right: 7px 0;
-	}
-
-	.boton_login{
-		outline: none;
-		border: none;
-		padding: 10px;
-		color: azure;
-		background: black;
-		border-radius: 5px;
-		display: block;
-		margin-right: 7px 0;
-	}
-
-</style>
-	
-
 {% endblock contenido %}

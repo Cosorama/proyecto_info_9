@@ -2,12 +2,20 @@
 {% load static %}
 
 {% block contenido %}
-<br><br>
-	<form method="POST">{%csrf_token%}
-		{{form.errors}}
-		<input type="text" name="username" placeholder="USUARIO">
-		<input type="password" name="password" placeholder="CONTRASEÑA">
+<section>
+<div class="index_content" id="noticias">
+	<div class="content_margin_noticas">
+		<div class="align_form" id="align_form">
+		<form method="POST" id="formulario_registro">{%csrf_token%}
+			{{form.errors}}
+			<input type="text" name="username" placeholder="Usuario">
+			<input type="password" name="password" placeholder="Contraseña">
 
-		<input type="submit" name="" value="ENVIAR">
-	</form>
+			<button type="submit" name="" value="ENVIAR">INGRESAR</button>
+			<br><br>¿No estás registrado? <i><a href="{% url 'usuarios:registro' %}">¡Registrate!</i></a>
+		</form>
+		</div>
+	</div>
+</div>
+</section>
 {% endblock %}

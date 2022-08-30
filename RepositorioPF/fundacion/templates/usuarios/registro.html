@@ -1,18 +1,18 @@
+{% extends 'base.html' %}
 {% load static %}
-{% block title %}Registro{% endblock %}
-{% block content %}
 
-<main role="main">
-  <div class="container">
-    <div class="row mt-3">
-      <div class="col-md-9 mx-auto mb-5">
-        <form action="" method="post">{% csrf_token %}
-          <h3 class="mb-4">Registro</h3>
+{% block contenido %}
+<section>
+<div class="index_content" id="noticias">
+	<div class="content_margin_noticas">
+		<div class="align_form" id="align_form">
+		<form id="formulario_registro_adaptado" action="" method="post">{% csrf_token %}
           {{form.as_p}}
-          <p><input type="submit" class="btn btn-primary btn-block" value="Confirmar"></p>
+          <button type="submit" class="btn btn-primary btn-block" value="Confirmar">REGISTRARSE</button>
+          <br><br>¿Ya estás registrado? <i><a href="{% url 'login' %}">¡Ingresá!</i></a>
         </form>
-      </div>
-    </div>
-  </div>
-</main>
+		</div>
+	</div>
+</div>
+</section>
 {% endblock %}
