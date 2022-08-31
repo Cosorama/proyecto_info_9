@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<br><br>
+<div class="main_div">
+	<br><br>
+	<h1>DETALLE EVENTO</h1>
+	<br>
+
+	<h2>{{ object.titulo }}</h2>
+				
+		<p>CATEGORIA: {{ object.categoria.nombre }}</p>
+		<p>CUERPO: {{ object.detalle }}</p>
+        <p>Modalidad: {{ object.modalidad.nombre }}</p>
+        <p>Costo: {{ object.costo.nombre }}</p>
+        <p>Lugar: {{ object.lugar }}</p>
+        <p>Fecha: {{ object.fecha }}</p>
+
+		<div id="detalles_evento">
+
+
+		</div>
+
+		{% if n.imagen %}
+			<img src="{{ object.imagen.url }}" width="100px" height="100px">
+		{% endif %}
+
+
+{% endblock contenido %}

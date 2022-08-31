@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="content_noticia_detalle" id="noticias">
+	<div class="content_margin_noticas">
+		<div class="contenedor_noticia">
+			{% for n in eventos %}
+			<a href="{% url 'eventos:evento_detail' n.pk %}">
+				<div class="imagen_noticia">{% if n.imagen %}<img src="{{ n.imagen.url }}">{% endif %}</div>
+				<div class="titulo_detalle">Titulo: {{ n.titulo }}</div>
+			</a>
+			<div class="cuerpo_detalle">Detalle: {{ n.detalle }}</div>
+
+			<div class="cuerpo_detalle">Categoria: {{ n.categoria.nombre }}</div>
+
+			<div class="cuerpo_detalle">Fecha: {{ n.fecha }}</div>
+
+			<div class="cuerpo_detalle">Modalidad: {{ n.modalidad.nombre }}</div>
+
+			<div class="cuerpo_detalle">Lugar: {{ n.lugar }}</div>
+
+			<div class="cuerpo_detalle">Costo: {{ n.costo.nombre }}</div>
+
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock contenido %}

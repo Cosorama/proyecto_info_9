@@ -2,29 +2,45 @@
 {% load static %}
 
 {% block contenido %}
-	
+<div class="content_noticia_detalle" id="noticias">
+	<div class="content_margin_noticas">
+		<div class="contenedor_noticia">
+			<div class="imagen_noticia">{% if n.imagen %}<img src="{{ n.imagen.url }}">{% endif %}</div>
+			<div class="autor_categoria_detalle"><i><b>{{ object.categoria.nombre }}</b></i></p></div>
 
+			<div class="titulo_detalle">{{object.titulo}}</div>
 
-	<h1>DETALLE NOTICIA</h1>
-	<br>
+			<div class="cuerpo_detalle">{{ object.cuerpo }}</div>
 
-	<h2>{{object.titulo}}</h2>
-	<p>CATEGORIA: {{ object.categoria.nombre }}</p>
-	{% if object.autor %}
-		<p>AUTOR: {{ object.autor }}</p>
-	{% endif %}
+			{% if object.autor %}
+			<div class="autor_categoria_detalle">Por: <b>{{ object.autor }}</b></div>
+			{% endif %}
 
-	<p>CUERPO: {{ object.cuerpo }}</p>
+			<div class="content_form_detalle">
+				<br><br>
+				<hr>
+				<h4>COMENTARIOS</h4>
+				{% for x in object.obtener_mis_comentarios %}
+					<b><i><p>{{x.usuario}}</b></i>: {{x.creado}}</p>
+					
+					<p>{{x.texto}}</p>
+				{% endfor %}
+				<hr>
+				{% if user.is_authenticated %}
 
-	{% if object.imagen %}
-		<img src="{{ object.imagen.url }}" width="100px" height="100px">
-	{% endif %}
-	
-	<br>
-	<br>
-	<h1>COMENTARIOS.....</h1>
-		<input type="text" name="">
-		<br><br><br>
-	
+					<form id="form_comment" method="POST" action="{% url 'noticias:agregar_comentario' object.pk %}">{% csrf_token %}
+						<textarea id="textarea_comment" rows="5" name="coment" placeholder="¿Qué opinás de este artículo?"></textarea>
+						<button class="boton_comentar" type="submit">COMENTAR</button>
+					</form>
 
+				{% else %}
+
+					<a class="boton_login" href="{% url 'login' %}">Comentar</a>
+
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock contenido %}

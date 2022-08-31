@@ -3,56 +3,167 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="utf-8">
-	<title>Botella de Amor RCIA</title>
+    <meta charset="utf-8">
+    <title>Botella de Amor Resistencia</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/rrr_ico.ico' %}"/>
+    <meta name="description" content="Practica para el proyecto de informatorio">
+    <meta name="keywords" content="reducir, reciclar, reutilizar">
 
-	<meta name="description" content="Practica para el proyecto de informatorio">
-	<meta name="keywords" content="reducir, reciclar, reutilizar">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="{%  static '/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="{%  static '/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{%  static '/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{%  static '/css/Article-List.css' %}">
+    <link rel="stylesheet" href="{%  static '/css/Login-Form-Clean.css' %}">
+    <link rel="stylesheet" href="{%  static '/css/Social-Icons.css' %}">
 
-	<link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css"/> <!--Estilos general-->
-	<link rel="icon" type="image/x-icon" href="{% static 'img/rrr_ico.ico' %}"/>
 </head>
 
-<body> 
-
-<!––
-background="{% static 'img/background_section3.jpg' %}" 
-style="background-repeat: repeat-y; background-size: cover;"
--->
-
-<header>
-	<div class="container">
-		<div class="logo_header">
-
-		<img src="{% static 'img/bootlew.gif' %}" 
-		style="float: left; width: 140px; height: auto; margin: 1.8%;">
-		<img src="{% static 'img/png_lgtext.png' %}"
-    	style="float: right; width: 110px; height: auto; margin: 2.4%;"></div>
-
-		<div class="menu">
-				
-			<ul>
-				<li><a href="{% url 'home' %}">Inicio</a></li>
-				{% if user.is_authenticated %}
-					<span>HOLA {{user.username}}!!</span>
-					<a href="{% url 'logout' %}">LOGOUT</a>
-				{% else %}
-					<a href="{% url 'login' %}">LOGIN</a>
-				{% endif %}
-				<li><a href="{% url 'noticias:listar_noticias' %}">Noticias</a></li> <!--href="{% url 'noticias:listar_noticias' %}"-->
-				<li><a href="#about_us">Nosotros</a></li>
-				<li><a href="#contact_us">Contacto</a></li>
-			</ul>
-
-		</div>
-	</div>
-</header> <!--fin header-->
-
-
-
-	{% block contenido %}
-
-	{% endblock contenido %}
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
+    <nav class="navbar navbar-light navbar-expand-md fixed-top" id="mainNav" style="background: rgba(0,0,0,0);border-color: rgba(255,255,255,0);padding: 0;margin-top: 0px;margin-left: 0;">
+        <div class="container"><img class="img-fluid" src="{% static '/img/bootlew.gif' %}" style="height: 80px;margin: 0;transform: translate(-18px);margin-top: 10px;"><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse text-end" id="navbarResponsive" style="color: rgb(255,255,255);margin-top: 0;">
+                <ul class="navbar-nav ms-auto" style="color: rgb(255,255,255);border-color: rgb(255,255,255);">
+                    <li class="nav-item nav-link" style="background: rgba(255,255,255,0);"><a class="nav-link active" href="#main" style="color: #000000;background: rgba(255,255,255,0);">INICIO</a></li>
+                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link" href="#notice" style="color: #000000;">NOTICIAS</a></li>
+                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link" href="#nosotros" style="color: #000000;">NOSOTRAS</a></li>
+                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link ma" href="#map" style="color: #000000;">MAPA</a></li>
+                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link" href="#contact" style="color: #000000;">CONTACTO</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link" href="{% url 'logout' %}" style="color: #5cb219;">LOGOUT</a></li>
+                    {% else %}
+                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link" href="{% url 'login' %}" style="color: #5cb219;">LOGIN</a></li>
+                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link" href="{% url 'usuarios:registro' %}" style="color: #5cb219;">REGISTRO</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead" style="background-image:url('static/img/background_section3.jpg');">
+        <div id="main" class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto"><img src="static/img/rec.png" style="filter: blur(0px) brightness(63%) hue-rotate(316deg) saturate(191%);opacity: 0.57;margin-top: 66px;">
+                        <p class="text-center intro-text" style="color: rgb(0,0,0);margin-top: 29px;">Fomentamos reducir el consumo de plásticos de un solo uso&nbsp; Acopiamos botellas llenas para así poder ser recicladas.<br></p><a class="btn btn-link btn-circle" role="button" href="#about" style="color: rgb(0,0,0);border-color: rgb(0,0,0);"><i class="fa fa-angle-double-down animated"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="text-center content-section" id="about" style="background: url(&quot;static/img/background_section3i.jpg&quot;) bottom / auto repeat, rgba(255,255,255,0);filter: blur(0px);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto" style="background: rgba(0,0,0,0);margin-top: -52px;">
+                    <div class="carousel slide m-auto" data-bs-ride="carousel" id="carousel-1" style="width: 450px;margin-left: 0;border: 2px dashed rgb(0,0,0);color: rgb(255,255,255);">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img class="w-100 d-block" src="static/img/1.jpg" alt="Slide Image"></div>
+                            <div class="carousel-item"><img class="w-100 d-block" src="static/img/2.jpg" alt="Slide Image"></div>
+                            <div class="carousel-item"><img class="w-100 d-block" src="static/img/3.jpg" alt="Slide Image"></div>
+                            <div class="carousel-item"><img class="w-100 d-block" src="static/img/4.jpg" alt="Slide Image"></div>
+                            <div class="carousel-item"><img class="w-100 d-block" src="static/img/5.jpg" alt="Slide Image"></div>
+                            <div class="carousel-item"><img class="w-100 d-block" src="static/img/6.jpg" alt="Slide Image"></div>
+                            <div class="carousel-item"><img class="w-100 d-block" src="static/img/7.jpg" alt="Slide Image"></div>
+                        </div>
+                        <div class="text-center" style="margin-left: 69px;border-color: rgb(0,0,0);color: rgb(255,255,255);"><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon" style="color: rgb(255,255,255);border-color: rgb(255,255,255);"></span><span class="visually-hidden" style="color: rgb(255,255,255);border-color: rgb(255,255,255);background: rgba(255,255,255,0);">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
+                        <ol class="carousel-indicators">
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="3"></li>
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="4"></li>
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="5"></li>
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="6"></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="text-center download-section content-section" id="notice" style="background-image: url('static/img/bot4.jpg');height: 696.797px;padding-top: 100px;padding-left: 31px;">
+        <section class="m-auto article-list" style="width: 943px;margin: 0;margin-left: 0px;background: rgba(255,255,255,0);margin-right: 0px;">
+            <div class="container" style="margin-right: 118px;padding-top: -7px;padding-right: 54px;">
+                <div class="intro">
+                    <h2 class="text-center" style="margin-bottom: -22px;padding-bottom: 24px;padding-top: 38px;">noticias</h2>
+                </div>
+                <div class="row articles">
+                    <div class="col-sm-6 col-md-4 item" style="background: rgba(255,255,255,0.35);"><a href="#"><img class="img-fluid" src="static/img/desk.jpg"></a>
+                        <h3 class="name">Article Title</h3>
+                        <p class="description" style="color: rgb(0,0,0);background: rgba(255,255,255,0);border-radius: 8px;border-bottom-right-radius: 0;border-bottom-left-radius: 0;border-top-left-radius: 10;border-top-right-radius: 10;border-color: rgb(0,0,0);">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" style="background: rgba(255,255,255,0.35);"><a href="#"><img class="img-fluid" src="static/img/building.jpg"></a>
+                        <h3 class="name">Article Title</h3>
+                        <p class="description" style="color: rgb(0,0,0);background: rgba(255,255,255,0);border-radius: 8px;border-bottom-right-radius: 0;border-bottom-left-radius: 0;border-top-left-radius: 10;border-top-right-radius: 10;border-color: rgb(0,0,0);">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item" style="background: rgba(255,255,255,0.35);"><a href="#"><img class="img-fluid" src="static/img/loft.jpg"></a>
+                        <h3 class="name">Article Title</h3>
+                        <p class="description" style="color: rgb(0,0,0);background: rgba(255,255,255,0);border-radius: 8px;border-bottom-right-radius: 0;border-bottom-left-radius: 0;border-top-left-radius: 10;border-top-right-radius: 10;border-color: rgb(0,0,0);">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <section class="text-center content-section" id="nosotros" style="background: #f2e001;filter: sepia(0%);height: 701.984px;">
+        <div class="container">
+            <div class="row" style="margin: 0;margin-right: 0;height: 488.969px;">
+                <div class="col-lg-8 offset-xl-0 mx-auto" style="height: 438.98400000000004px;margin: -11px 193.172px 0px;margin-top: -35px;width: 825px;">
+                    <h2 style="color: rgb(0,0,0);margin-bottom: 40px;font-size: 32px;">nosotras</h2>
+                    <figure class="figure"><img class="img-fluid figure-img" src="static/img/Maite%20Gil%20de%20Muro.jpeg" style="height: 306px;padding: 1px;padding-left: -4px;color: #000000;font-weight: bold;font-family: Cabin, sans-serif;">
+                        <figcaption class="figure-caption" style="padding: 1px;padding-left: -4px;color: #000000;font-weight: bold;font-family: Cabin, sans-serif;">Maite Gil de Muro</figcaption>
+                    </figure>
+                    <figure class="figure" style="padding: 1px;padding-left: -4px;color: #000000;font-weight: bold;font-family: Cabin, sans-serif;"><img class="img-fluid figure-img" src="static/img/Cecilia%20Gil%20de%20Muro.jpeg" style="height: 306px;padding: 1px;padding-left: -4px;">
+                        <figcaption class="figure-caption" style="padding: 1px;padding-left: -4px;color: #000000;font-weight: bold;font-family: Cabin, sans-serif;">Cecilia Gil de Muro</figcaption>
+                    </figure>
+                    <figure class="figure" style="padding: 1px;padding-left: -4px;color: #000000;font-weight: bold;font-family: Cabin, sans-serif;"><img class="img-fluid figure-img" src="static/img/maceleste%20Lestani.jpeg" style="height: 306px;padding: 1px;padding-left: -4px;">
+                        <figcaption class="figure-caption" style="padding: 1px;padding-left: -4px;color: #000000;font-weight: bold;font-family: Cabin, sans-serif;">Má. Celeste Lestani</figcaption>
+                    </figure>
+                    <figure class="figure" style="color: #000000;font-weight: bold;font-family: Cabin, sans-serif;"><img class="img-fluid figure-img" src="static/img/Roció%20Blotta.jpeg" style="height: 306px;padding: 1px;padding-left: -4px;font-weight: bold;font-family: Cabin, sans-serif;">
+                        <figcaption class="figure-caption" style="color: #000000;font-weight: bold;font-family: Cabin, sans-serif;">Roció Blotta</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="map" class="map-clean" style="background: #f2e001;height: 759px;"><iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.google.com/maps/d/embed?mid=1QBrPiv4TC7PHydND-XuRq2vPXHZBIkAE&ehbc=2E312F" width="100%" height="450" style="height: 759px;"></iframe></div>
+    <section class="text-center flex-grow-0 content-section" id="contact" style="background: #f2e001;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 d-grid mx-auto">
+                    <h2 style="color: rgb(68,68,68);">Contacto</h2>
+                    <p class="text-center text-sm-center text-md-center text-xl-center d-xl-flex justify-content-xl-center align-items-xl-center" style="color: rgb(68,68,68);width: 525px;margin: 0px;margin-left: 100px;">Súmate a ser parte del cambio, entre todos y todas podes hacer del mundo un lugar mejor!<br></p>
+                    <p class="d-xl-flex m-auto justify-content-xl-center" style="color: rgb(68,68,68);width: 525px;margin: 0px;margin-left: 100px;"><a href="https://www.facebook.com/hashtag/botellasdeamor?__eep__=6&amp;__cft__[0]=AZX4hNRyZZTwR5i_U8zDoOPe-oVQhL7C65WqtktiwBAssGIN5RNVOw-yC96cttjUMbjrPqqJp2x1hBMCrro3HDWh25jlNKJiWfC3om2sE2eIv2urGjGOgEvMOq6eZY0sSpI3S9pWvP26csr7MTa1y9iWenbsCoKJsNkCDRs1KsDM_WvE71mj90QjbkKnn_WvG98&amp;__tn__=*NK-R">#botellasdeamor</a> <a href="https://www.facebook.com/hashtag/desplastificate?__eep__=6&amp;__cft__[0]=AZX4hNRyZZTwR5i_U8zDoOPe-oVQhL7C65WqtktiwBAssGIN5RNVOw-yC96cttjUMbjrPqqJp2x1hBMCrro3HDWh25jlNKJiWfC3om2sE2eIv2urGjGOgEvMOq6eZY0sSpI3S9pWvP26csr7MTa1y9iWenbsCoKJsNkCDRs1KsDM_WvE71mj90QjbkKnn_WvG98&amp;__tn__=*NK-R">#desplastificate</a> <a href="https://www.facebook.com/hashtag/mejorsinplastico?__eep__=6&amp;__cft__[0]=AZX4hNRyZZTwR5i_U8zDoOPe-oVQhL7C65WqtktiwBAssGIN5RNVOw-yC96cttjUMbjrPqqJp2x1hBMCrro3HDWh25jlNKJiWfC3om2sE2eIv2urGjGOgEvMOq6eZY0sSpI3S9pWvP26csr7MTa1y9iWenbsCoKJsNkCDRs1KsDM_WvE71mj90QjbkKnn_WvG98&amp;__tn__=*NK-R">#mejorsinplastico</a><br></p>
+                    <div class="enviarmail">
+                        <form id="contact_form" action="mailto:maximilianofemeniaok@gmail.com" target="_blank">
+                                <input type="text" placeholder="Nombre" id="name" name="name" required minlength="4" maxlength="10" size="10" style="margin-top: 20px; margin-bottom: 15px;">
+                                <input type="tel" placeholder="Teléfono" id="tel" name="tel" required minlength="4" maxlength="10" size="10">
+                                <input type="email" placeholder="Email" id="email" name="email" required minlength="4" maxlength="40" size="10">
+                            <div class="consulta">
+                                <textarea name="textarea" rows="2" cols="40" placeholder="¿Cómo te podemos ayudar?"></textarea>
+                            </div>
+                            <div class="enviarcons" style= "margin-top: 20px; margin-bottom: 15px;">
+                                <div class="mb-4"><button class="btn btn-primary btn-block" type="submit" style="background: rgb(0,178,255);">Enviar</button></div>
+                            </div>
+                    </div>
+                    <div class="social-icons" style="background: rgba(0,0,0,0);"><a href="#" target="_blank"><i class="icon ion-social-twitter" style="color: #000000;border-color: #000000;"></i></a><a href="https://www.facebook.com/botelladeamorresistencia" style="color: #000000;border-color: #000000;" target="_blank"><i class="icon ion-social-facebook" style="color: #000000;border-color: #000000;"></i></a><a href="https://www.instagram.com/botelladeamorresistencia" style="color: #000000;border-color: #000000;" target="_blank"><i class="icon ion-social-instagram" style="color: #000000;border-color: #000000;"></i></a><a href="#" style="color: #000000;border-color: #000000;" target="_blank"><i class="icon ion-social-whatsapp" style="color: #000000;border-color: #000000;"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer style="padding: 21px 0px;">
+        <div class="container text-center">
+            <p style="margin-top: -3px;">9 Group - Informatorio © 2022</p>
+        </div>
+    </footer>
+    <script src="{%  static '/js/jquery.min.js' %}"></script>
+    <script src="{%  static '/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{%  static '/js/grayscale.js' %}"></script>
 
 </body>
+
+
+{% block contenido %}
+
+{% endblock contenido %}
+
 </html>

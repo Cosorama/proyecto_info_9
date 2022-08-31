@@ -2,19 +2,23 @@
 {% load static %}
 
 {% block contenido %}
-    <h1>Aca aparecen las noticias</h1>
-    <br>
-	{% for n in notis %}
-		<h2>{{ n.titulo }}</h2>
-		<p>Categoria: {{ n.categoria.nombre }}</p>
-		{% if n.autor %}
-			<p>Autor: {{ n.autor }}</p>
-			{% endif %}
-		<p>Cuerpo: {{ n.cuerpo }}</p>
-		{% if n.imagen %}
-			<img src="{{ n.imagen.url }}" width="100px" height="100px">
-		{% endif %}
-		<a href="{% url 'noticias:noticia_detail' n.pk %}">VER MAS</a>
-	{% endfor %}
+<section>
+	<div class="index_content_listas" id="noticias">
+		<div class="content_margin_noticas_listas">
 
+			<form id="form_filtros" action="." method="GET">
+					{{ formulario_filtro.categoria }}
+					<button id="boton-filtrar" class="boton-filtrar" type="submit"><img src="{%  static 'img/lupa.png' %}"></button>
+			</form>
+
+			{% for n in notis %}
+				<a href="{% url 'noticias:noticia_detail' n.pk %}"><div class="outstanding">
+					<div id="img_news">{% if n.imagen %}<img src="{{ n.imagen.url }}">{% endif %}</div>
+					<div id="title_news">{{ n.titulo }}</div>
+				</div></a>
+			{% endfor %}
+
+		</div>
+	</div>
+</section> <!--fin section-->
 {% endblock contenido %}
