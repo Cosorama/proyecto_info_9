@@ -2,6 +2,17 @@
 {% load static %}
 
 {% block contenido %}
+<div>
+	<h1>Filtros</h1>
+	<form action="." method="GET">
+		<div>
+			{{ form.categoria }}
+			<button class="boton-filtrar" type="submit">
+				Filtrar
+			</button>
+		</div>
+	</form>	
+</div>
 <div class="content_noticia_detalle" id="noticias">
 	<div class="content_margin_noticas">
 		<div class="contenedor_noticia">

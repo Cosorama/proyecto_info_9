@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'base_noticias.html' %}
 {% load static %}
 
 {% block contenido %}
 <div class="content_noticia_detalle" id="noticias">
 	<div class="content_margin_noticas">
 		<div class="contenedor_noticia">
-			<div class="imagen_noticia">{% if n.imagen %}<img src="{{ n.imagen.url }}">{% endif %}</div>
+			<div class="imagen_noticia">{% if object.imagen %}<img src="{{ object.imagen.url }}">{% endif %}</div>
 			<div class="autor_categoria_detalle"><i><b>{{ object.categoria.nombre }}</b></i></p></div>
 
 			<div class="titulo_detalle">{{object.titulo}}</div>
@@ -43,4 +43,9 @@
 		</div>
 	</div>
 </div>
+<style>
+	.content_noticia_detalle{
+		background-color: aliceblue;
+	}
+</style>
 {% endblock contenido %}
