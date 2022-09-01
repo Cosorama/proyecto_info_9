@@ -1,42 +1,31 @@
-{% extends 'base_noticias.html' %}
+{% extends 'base_secciones.html' %}
 {% load static %}
 
 {% block contenido %}
 <section>
 	<div class="index_content_listas" id="noticias">
-		<div class="content_margin_noticas_listas">
-			<div class="filtro_categoria">
-				<form id="form_filtros" action="." method="GET">
-					{{ formulario_filtro.categoria }}
-					<button id="boton-filtrar" class="boton-filtrar" type="submit"><img src="{%  static 'img/lupa.png' %}"></button>
-				</form>
-			</div>
-			<div class="filtro_fecha">
-				<form action="." method="GET">
-					<div>
-						{{ formulario_fecha.fecha }}
-						<button class="boton-filtrar" type="submit">
-							Filtrar
-						</button>
-					</div>
-				</form>
-			</div>
 
+		<div class="content_margin_noticas_listas">
+
+			<form id="form_filtros" action="." method="GET">
+				{{ formulario_filtro.categoria }}
+				<button id="boton-filtrar" class="boton-filtrar" type="submit"><img src="{%  static 'img/lupa.png' %}"></button>
+			</form>
+			
 			{% for n in notis %}
 				<a href="{% url 'noticias:noticia_detail' n.pk %}"><div class="outstanding">
 					<div id="img_news">{% if n.imagen %}<img src="{{ n.imagen.url }}">{% endif %}</div>
-					<div id="title_news">{{ n.titulo }}</div>
+					<div id="title_news">{{ n.titulo }}</div><p id="noticia_mas">Ver más...</p>
 				</div></a>
-				<p>CATEGORIA: {{ n.categoria.nombre }}</p>
-				<p>FECHA: {{ n.creado }}</p>
-				{% if n.autor %}
-					<p>AUTOR: {{ n.autor }}</p>
-				{% endif %}
-
-				<p>CUERPO: {{ n.cuerpo }}</p>
 			{% endfor %}
 
 		</div>
+
+			<form id="form_fecha_filtro" action="." method="GET">
+					{{ formulario_fecha.fecha }}
+					<button id="boton-filtrar_fecha" class="boton-filtrar" type="submit"><img src="{%  static 'img/lupa.png' %}"></button>
+			</form>
+
 	</div>
 </section> <!--fin section-->
 {% endblock contenido %}

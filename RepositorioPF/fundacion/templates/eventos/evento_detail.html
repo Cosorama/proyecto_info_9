@@ -1,31 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'base_secciones.html' %}
 {% load static %}
 
 {% block contenido %}
 
-<br><br>
-<div class="main_div">
-	<br><br>
-	<h1>DETALLE EVENTO</h1>
-	<br>
+<div class="content_noticia_detalle" id="noticias">
+	<div class="content_margin_noticas">
+		<div class="contenedor_noticia">
+			<div class="imagen_noticia">
+				{% if object.imagen %}
+					<img src="{{ object.imagen.url }}">
+				{% endif %}
+			</div>
+			<div class="autor_categoria_detalle"><i><b>{{ object.categoria.nombre }}</b></i></p></div>
 
-	<h2>{{ object.titulo }}</h2>
-				
-		<p>CATEGORIA: {{ object.categoria.nombre }}</p>
-		<p>CUERPO: {{ object.detalle }}</p>
-        <p>Modalidad: {{ object.modalidad.nombre }}</p>
-        <p>Costo: {{ object.costo.nombre }}</p>
-        <p>Lugar: {{ object.lugar }}</p>
-        <p>Fecha: {{ object.fecha }}</p>
+			<div class="titulo_detalle">{{object.titulo}}</div>
 
-		<div id="detalles_evento">
+			<div class="cuerpo_detalle">{{ object.detalle }}</div>
 
+			<div id="detalles_evento">
+				Modalidad: <b>{{ object.modalidad.nombre }}</b><br><br>
+				Costo: <b>{{ object.costo.nombre }}</b><br><br>
+				Lugar: <b>{{ object.lugar }}</b><br><br>
+				Fecha: <b>{{ object.fecha }}</b>
+			</div>
+
+			{% if object.autor %}
+			<div class="autor_categoria_detalle">Por: <b>{{ object.autor }}</b></div>
+			{% endif %}
 
 		</div>
-
-		{% if n.imagen %}
-			<img src="{{ object.imagen.url }}" width="100px" height="100px">
-		{% endif %}
-
+	</div>
+</div>
 
 {% endblock contenido %}

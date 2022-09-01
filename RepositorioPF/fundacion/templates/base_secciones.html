@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>BDA Chaco</title>
+
+	<meta name="description" content="Practica para el proyecto de informatorio">
+	<meta name="keywords" content="reducir, reciclar, reutilizar">
+
+	<link rel="stylesheet" href="{% static 'css/estilos.css' %}" type="text/css"/> <!--Estilos general-->
+    
+    <script type="text/javascript" src="{% static 'js/jquery-1.7.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+	<link rel="icon" type="image/x-icon" href="{% static 'img/rrr_ico.ico' %}"/>
+</head>
+
+<body>
+<div class="portrait_view">Por favor, revisa nuestra web desde una computadora. Estamos trabajando en la vista móvil :)</div>
+<header>
+	<div class="container">
+		<div class="logo_header"><img src="{% static 'img/bootlew.gif' %}"></div>
+			
+			<select onchange="document.location.href=this.value" id="menu_movil">
+					<option selected disabled>¿Dónde vas?</option>
+					
+					<option value="{% url 'home' %}">Inicio</option>
+					<option value="{% url 'noticias:listar_noticias' %}">Noticias</option>
+					<option value="{% url 'eventos:listar_eventos' %}">Eventos</option>
+					<!--revisar caso de login-->
+					{% if user.is_authenticated %}
+					<span>Hola, {{user.username}}</span>
+					<option value="{% url 'logout' %}">Cerrar sesión</option>
+					{% else %}
+					<option value="{% url 'login' %}">Ingresá</li>
+					<option value="{% url 'usuarios:registro' %}">Unite</option>
+					{% endif %}
+					<!--logout-->
+			</select>
+		
+		<div class="menu" id="menu">
+			
+			<ul>
+				<li><a href="{% url 'home' %}">Inicio</a></li>
+				<li><a href="{% url 'noticias:listar_noticias' %}">Noticias</a></li>
+				<li><a href="{% url 'eventos:listar_eventos' %}">Eventos</a></li>
+				<!--revisar caso de login-->
+				{% if user.is_authenticated %}
+				<li><span><b>Hola, <i>{{user.username}}</i></span></li>
+				<li><a href="{% url 'logout' %}">Salir</a></li>
+				{% else %}
+				<li><a href="{% url 'login' %}">Ingresá</a></li>
+				<li><a href="{% url 'usuarios:registro' %}">Unite</a></li>
+				{% endif %}
+				<!--logout-->
+			</ul>
+
+		</div>
+	</div>
+</header><!--fin header-->
+		{% block contenido %}
+
+        {% endblock contenido %}
+</body>
+</html>

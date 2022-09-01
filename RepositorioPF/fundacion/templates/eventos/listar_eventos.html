@@ -1,41 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'base_secciones.html' %}
 {% load static %}
 
 {% block contenido %}
-<div>
-	<h1>Filtros</h1>
-	<form action="." method="GET">
-		<div>
-			{{ form.categoria }}
-			<button class="boton-filtrar" type="submit">
-				Filtrar
-			</button>
-		</div>
-	</form>	
-</div>
-<div class="content_noticia_detalle" id="noticias">
-	<div class="content_margin_noticas">
-		<div class="contenedor_noticia">
-			{% for n in eventos %}
-			<a href="{% url 'eventos:evento_detail' n.pk %}">
-				<div class="imagen_noticia">{% if n.imagen %}<img src="{{ n.imagen.url }}">{% endif %}</div>
-				<div class="titulo_detalle">Titulo: {{ n.titulo }}</div>
-			</a>
-			<div class="cuerpo_detalle">Detalle: {{ n.detalle }}</div>
+<section>	
+	
+	<div class="index_content_listas" id="noticias">
+		<div class="content_margin_noticas_listas">
+		
+		<form id="form_filtros" action="." method="GET">
 
-			<div class="cuerpo_detalle">Categoria: {{ n.categoria.nombre }}</div>
+				{{ form.categoria }}
+				<button id="boton-filtrar" class="boton-filtrar" type="submit"><img src="{%  static 'img/lupa.png' %}"></button>
+		</form>		
 
-			<div class="cuerpo_detalle">Fecha: {{ n.fecha }}</div>
+		{% for n in eventos %}
+			<a href="{% url 'eventos:evento_detail' n.pk %}"><div class="outstanding">
+				<div id="img_news">{% if n.imagen %}<img src="{{ n.imagen.url }}">{% endif %}</div>
+				<div id="fecha_evento"><b>Realiza: <i>{{ n.fecha }}</i></b></div>
+				<div id="title_news">{{ n.titulo }}</div>
+			</div></a>
+		{% endfor %}
 
-			<div class="cuerpo_detalle">Modalidad: {{ n.modalidad.nombre }}</div>
-
-			<div class="cuerpo_detalle">Lugar: {{ n.lugar }}</div>
-
-			<div class="cuerpo_detalle">Costo: {{ n.costo.nombre }}</div>
-
-			{% endfor %}
-			</div>
-		</div>
 	</div>
 </div>
+
+</section> <!--fin section-->
 {% endblock contenido %}

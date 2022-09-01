@@ -3,60 +3,130 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Botella de Amor Resistencia</title>
-    <link rel="icon" type="image/x-icon" href="{% static 'img/rrr_ico.ico' %}"/>
-    <meta name="description" content="Practica para el proyecto de informatorio">
-    <meta name="keywords" content="reducir, reciclar, reutilizar">
+	<meta charset="utf-8">
+	<title>BDA Chaco</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="stylesheet" href="{%  static '/bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
-    <link rel="stylesheet" href="{%  static '/fonts/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{%  static '/fonts/ionicons.min.css' %}">
-    <link rel="stylesheet" href="{%  static '/css/Article-List.css' %}">
-    <link rel="stylesheet" href="{%  static '/css/Login-Form-Clean.css' %}">
-    <link rel="stylesheet" href="{%  static '/css/Social-Icons.css' %}">
+	<meta name="description" content="Practica para el proyecto de informatorio">
+	<meta name="keywords" content="reducir, reciclar, reutilizar">
 
+	<link rel="stylesheet" href="{% static 'css/estilos.css' %}" type="text/css"/> <!--Estilos general-->
+    
+    <script type="text/javascript" src="{% static 'js/jquery-1.7.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/script_select_movil.js' %}"></script>
+
+	<link rel="icon" type="image/x-icon" href="{% static 'img/rrr_ico.ico' %}"/>
 </head>
 
-<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
-    <nav class="navbar navbar-light navbar-expand-md fixed-top" id="mainNav" style="background: rgba(0,0,0,0);border-color: rgba(255,255,255,0);padding: 0;margin-top: 0px;margin-left: 0;">
-        <div class="container"><img class="img-fluid" src="{% static '/img/bootlew.gif' %}" style="height: 80px;margin: 0;transform: translate(-18px);margin-top: 10px;"><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse text-end" id="navbarResponsive" style="color: rgb(255,255,255);margin-top: 0;">
-                <ul class="navbar-nav ms-auto" style="color: rgb(255,255,255);border-color: rgb(255,255,255);">
-                    <li class="nav-item nav-link" style="background: rgba(255,255,255,0);"><a class="nav-link active" href="#main" style="color: #000000;background: rgba(255,255,255,0);">INICIO</a></li>
-                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link" href="#notice" style="color: #000000;">NOTICIAS</a></li>
-                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link" href="#nosotros" style="color: #000000;">NOSOTRAS</a></li>
-                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link ma" href="#map" style="color: #000000;">MAPA</a></li>
-                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link" href="#contact" style="color: #000000;">CONTACTO</a></li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link" href="{% url 'logout' %}" style="color: #5cb219;">LOGOUT</a></li>
-                    {% else %}
-                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link" href="{% url 'login' %}" style="color: #5cb219;">LOGIN</a></li>
-                    <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link" href="{% url 'usuarios:registro' %}" style="color: #5cb219;">REGISTRO</a></li>
-                    {% endif %}
-                </ul>
+<body>
+<div class="portrait_view">Por favor, revisa nuestra web desde una computadora. Estamos trabajando en la vista móvil :)</div>
+<header>
+	<div class="container">
+		<div class="logo_header"><img src="{% static 'img/bootlew.gif' %}"></div>
+		<div class="menu" id="menu">
+			<select onchange="document.location.href=this.value" id="menu_movil">
+				<option selected disabled>¿Dónde vas?</option>
+				
+				<option value="{% url 'home' %}">Inicio</option>
+				<option value="#about_us">Nosotras</option>
+				<option value="#contact_us">Contacto</option>
+				<option value="{% url 'noticias:listar_noticias' %}">Noticias</option>
+				<option value="{% url 'eventos:listar_eventos' %}">Eventos</option>
+				<!--revisar caso de login-->
+				{% if user.is_authenticated %}
+				<span>Hola, {{user.username}}</span>
+				<option value="{% url 'logout' %}">Cerrar sesión</option>
+				{% else %}
+				<option value="{% url 'login' %}">Ingresá</li>
+				<option value="{% url 'usuarios:registro' %}">Unite</option>
+				{% endif %}
+				<!--logout-->
+			</select>
+			
+			<ul>
+				<li><a href="{% url 'home' %}">Inicio</a></li>
+				<li><a href="#about_us">Nosotras</a></li>
+				<li><a href="#contact_us">Contacto</a></li>
+				<li><a href="{% url 'noticias:listar_noticias' %}">Noticias</a></li>
+				<li><a href="{% url 'eventos:listar_eventos' %}">Eventos</a></li>
+				<!--revisar caso de login-->
+				{% if user.is_authenticated %}
+				<li><span><b>Hola, {{user.username}}</b></span></li>
+				<li><a href="{% url 'logout' %}">Salir</a></li>
+				{% else %}
+				<li><a href="{% url 'login' %}">Ingresá</a></li>
+				<li><a href="{% url 'usuarios:registro' %}">Unite</a></li>
+				{% endif %}
+				<!--logout-->
+			</ul>
+
+		</div>
+	</div>
+</header><!--fin header-->
+		{% block contenido %}
+
+        {% endblock contenido %}
+<section>
+    <div id="about_us">
+        <div class="contact_content_about">
+
+        <div class="titulo_section">¡Sobre <i>Botella de Amor!</i></div>
+            <div class="about_us_text">
+                <b>Botella de Amor</b> es un proyecto sin fines de lucro dedicado al desarrollo sostenible y mejoramiento de las condiciones de vida de las comunidades, con el objetivo principal de reducir los residuos plásticos en el ambiente, ya que son altamente contaminantes. Asimismo, se propone generar conciencia en la ciudadanía sobre la necesidad de reducir su uso y de consumir responsablemente. <br><br>
+				<div class="detalles_nosotras">
+
+					<div id="detalle_fijo">
+						<div id="illustration_img"><img src="{% static 'img/rec_bottle.png' %}"></div>
+						<p id="titulo_argumento">Nuestro objetivo</p>
+						<p id="detalle_argumento">Promovemos un cambio de hábito en la comunidad para reducir los residuos, impulsar el reciclaje, el consumo responsable y la economía circular. </p>
+					</div>
+
+					<div id="detalle_fijo_como">
+						<div id="illustration_img"><img src="{% static 'img/planet_rrr.png' %}"></div>
+						<p id="titulo_argumento">¿Qué hacemos?</p>
+						<p id="detalle_argumento">Le damos trazabilidad a las <b>botellas de amor</b> que son fruto del trabajo de miles de personas a lo largo y ancho del país que voluntariamente separan sus residuos plásticos, brindándoles una opción para que puedan ser recuperados. </p>
+					</div>
+
+				</div>
             </div>
+			<hr>
+			<div class="imagenes">
+				<div class="contenedor_autoras">
+					<div class="foto_autora"><img src="{% static 'img/ceci.jpeg' %}"></div>
+					<div class="nombre">CECILIA GIL DE MURO</div>
+				</div>
+				<div class="contenedor_autoras">
+					<div class="foto_autora"><img src="{% static 'img/mace.jpeg' %}"></div>
+					<div class="nombre">M. CELESTE LESTANI</div>
+				</div>
+				<div class="contenedor_autoras">
+					<div class="foto_autora"><img src="{% static 'img/maite.jpeg' %}"></div>
+					<div class="nombre">MAITE GIL DE MURO</div>
+				</div>
+				<div class="contenedor_autoras">
+					<div class="foto_autora"><img src="{% static 'img/rocio.jpeg' %}"></div>
+					<div class="nombre">ROCIO BLOTTA</div>
+				</div>
+			</div>
+
+			<p id="detalle_final">Nos sumamos a las acciones realizada por la <b>Fundación Botella de Amor</b> que encontró una alternativa a los plásticos de difícil reciclaje, mediante una estrategia innovadora que consiste en llenar botellas con los residuos plásticos que se generan a diario. Al recuperar estos plásticos, evitamos que terminen en ecosistemas o en la basura donde tardan hasta 500 años en degradarse, combatimos el cambio climático reduciendo las emisiones de gases de efecto invernadero y le damos una solución a residuos que no tienen alternativas de reciclaje.</p>
+
         </div>
-    </nav>
-    <header class="masthead" style="background-image:url('static/img/background_section3.jpg');">
-        <div id="main" class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto"><img src="static/img/rec.png" style="filter: blur(0px) brightness(63%) hue-rotate(316deg) saturate(191%);opacity: 0.57;margin-top: 66px;">
-                        <p class="text-center intro-text" style="color: rgb(0,0,0);margin-top: 29px;">Fomentamos reducir el consumo de plásticos de un solo uso&nbsp; Acopiamos botellas llenas para así poder ser recicladas.<br></p><a class="btn btn-link btn-circle" role="button" href="#about" style="color: rgb(0,0,0);border-color: rgb(0,0,0);"><i class="fa fa-angle-double-down animated"></i></a>
-                    </div>
-                </div>
-            </div>
+    </div>
+</section> <!--nosotros-->
+<section>
+    <div id="contact_us">
+        <div class="contact_content">
+                    
+            <div class="titulo_section">Contactate con nosotros!</div>
+            <div id="map"><iframe src="https://www.google.com/maps/d/embed?mid=1QBrPiv4TC7PHydND-XuRq2vPXHZBIkAE&ehbc=2E312F" width="980" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
+            <div id="redes_sociales">
+				<a href="https://www.facebook.com/botelladeamorresistencia" target="_blank" ><div id="fb">&nbsp;</div></a>
+				<a href="https://www.instagram.com/botelladeamorresistencia/" target="_blank"><div id="ig">&nbsp;</div></a>
+			</div>
         </div>
-    </header>
-
-{% block contenido %}
-
-{% endblock contenido %}
-
+    </div>
+</section> <!--contacto-->
+<div id="creditos_grupo">Powered by Grupo 9 | Informatorio Virtual 2022</div>
 </body>
-
 </html>

@@ -1,36 +1,18 @@
+{% extends 'base_secciones.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Ingresar Usuario</title>
-
-  <link rel="stylesheet" href="{%  static 'bootstrap/css/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
-  <link rel="stylesheet" href="{%  static 'fonts/font-awesome.min.css' %}">
-  <link rel="stylesheet" href="{%  static 'fonts/ionicons.min.css' %}">
-  <link rel="stylesheet" href="{%  static 'css/Article-List.css' %}">
-  <link rel="stylesheet" href="{%  static 'css/Login-Form-Clean.css' %}">
-  <link rel="stylesheet" href="{%  static 'css/Social-Icons.css' %}">
-</head>
-
-<body>
-  <section class="login-clean" style="height: 1400px;background: rgb(251,255,70);">
-    {% block content %}
-    <form action="" method="post">{% csrf_token %}
-      <h3 class="mb-3">Registro</h3>
-      {{form.as_p}}
-      <p><div class="mb-3"><button class="btn btn-primary btn-block" type="submit" style="background: rgb(0,178,255);">Confirmar</button></div></p>
-    </form>
-    {% endblock %}
-  </section>
-  <script src="{%  static '/js/jquery.min.js' %}"></script>
-  <script src="{%  static '/bootstrap/js/bootstrap.min.js' %}"></script>
-  <script src="{%  static '/js/grayscale.js' %}"></script>
-</body>
-
-</html>
+{% block contenido %}
+<section>
+	<div class="index_content_listas" id="noticias">
+	<div class="content_margin_noticas">
+		<div class="align_form" id="align_form">
+		<form id="formulario_registro_adaptado" action="" method="post">{% csrf_token %}
+          {{form.as_p}}
+          <button type="submit" class="btn btn-primary btn-block" value="Confirmar">REGISTRARSE</button>
+          <br><br>¿Ya estás registrado? <i><a href="{% url 'login' %}">¡Ingresá!</i></a>
+        </form>
+		</div>
+	</div>
+</div>
+</section>
+{% endblock %}
